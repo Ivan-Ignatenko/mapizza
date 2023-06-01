@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { DostavkaComponent } from './pages/dostavka/dostavka.component';
 import { ActionsComponent } from './pages/actions/actions.component';
@@ -23,7 +22,6 @@ import { BasketComponent } from './pages/basket/basket.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
     AboutUsComponent,
     DostavkaComponent,
     ActionsComponent,

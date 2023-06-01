@@ -2,19 +2,21 @@
 
 .container {
     width: 90%;
-    height: 200px;
+    height: 170px;
     margin: 0 auto;
-    border: 1px solid black;
     border-radius: 10px;
+    position: sticky;
+    top: -70px;
 
     .top {
         width: 100%;
-        height: 40%;
-        padding: 0px 10px;
+        height: 70px;
+        padding: 0px 10px 0px 30px;
         display: flex;
+        justify-content: space-between;
 
         .info {
-            width: 10%;
+            width: 12%;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -58,42 +60,183 @@
             height: 100%;
             display: flex;
             align-items: center;
-        }
+            justify-content: right;
 
-        .favorites {
-            width: 5%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            // border: 1px solid black;
-
-            img {
-                width: 25px;
-                height: 25px;
+            b {
+                color: $main-color-green;
             }
         }
 
-        .enter{
-            width: 8%;
+        .wrapper {
+            width: 10%;
             height: 100%;
             display: flex;
-            align-items: center;
+            justify-content: space-around;
 
-            button{
-                width: 80px;
-                height: 40px;
-                font-size: 14px;
-                background-color: $main-color-red;
-                border-radius: 5px;
-                color: white;
+            .favorites {
+                width: 50px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                svg {
+                    cursor: pointer;
+                    stroke: black;
+
+                    &:hover {
+                        stroke: $main-color-green;
+                    }
+                }
+
+                .count {
+                    width: 25px;
+                    height: 25px;
+                    background-color: $main-color-red;
+                    border-radius: 50%;
+                    color: white;
+                    text-align: center;
+                    line-height: 25px;
+                    position: absolute;
+                    top: 15px;
+                    left: 12px;
+                    font-size: 14px;
+                }
+            }
+
+            .enter {
+                width: 100px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                button {
+                    width: 80px;
+                    height: 40px;
+                    font-size: 14px;
+                    background-color: $main-color-red;
+                    border-radius: 12px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: 0.5s;
+
+                    svg {
+                        stroke: white;
+                        margin-right: 5px;
+                    }
+
+                    &:hover {
+                        background-color: $main-color-green;
+                    }
+                }
             }
         }
     }
 
     .bottom {
         width: 100%;
-        height: 60%;
-        background-color: lightgray;
+        height: 100px;
+        background-color: #f5faf2;
         border-radius: 10px;
+        display: flex;
+        position: sticky;
+        top: 0;
+
+        .header-logo {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 80%;
+                height: 90%;
+                cursor: pointer;
+            }
+        }
+
+        .menu-list {
+            width: 70%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .category {
+                width: 24%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                position: relative;
+
+                img {
+                    margin-bottom: 6px;
+                }
+
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 3px;
+                    position: absolute;
+                    left: 0px;
+                    bottom: 0px;
+                    background-color: $main-color-green;
+                    transform: scaleX(0);
+                    transition: 0.5s;
+                }
+
+                &:hover {
+                    color: $main-color-green;
+                    cursor: pointer;
+                }
+
+                &:hover::before {
+                    transform: scaleX(1);
+                }
+            }
+        }
+
+        .basket {
+            width: 10%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // @extend %flex;
+            cursor: pointer;
+
+            .wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // @extend %flex;
+                position: relative;
+
+                p {
+                    margin-left: 20px;
+                }
+
+                .sum {
+                    width: 25px;
+                    height: 25px;
+                    background-color: $main-color-red;
+                    border-radius: 50%;
+                    color: white;
+                    text-align: center;
+                    line-height: 25px;
+                    position: absolute;
+                    bottom: 16px;
+                    left: 16px;
+                    font-size: 14px;
+                }
+            }
+        }
     }
 }
