@@ -1,0 +1,108 @@
+@import "../../shared/styles/variables";
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        width: 6%;
+        font-size: 45px;
+        font-weight: bolder;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -50px;
+            width: 64px;
+            height: 54px;
+            background: url(../../../assets/images/title-decor.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+
+    .faq {
+        width: 100%;
+        display: flex;
+        margin-top: 50px;
+
+        .accordion {
+            width: 60%;
+            border-bottom: 1px solid $border-color;
+
+            .accordion-item {
+                padding: 10px 0px;
+                border-top: 1px solid $border-color;
+
+                .accordion-title {
+                    display: block;
+                    cursor: pointer;
+                    position: relative;
+                    font-weight: bolder;
+                    font-size: 20px;
+                    padding: 10px 15px;
+                    transition: 0.4s;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        border-style: solid;
+                        border-width: 10px 6px 0 6px;
+                        border-color: gray transparent transparent transparent;
+                        position: absolute;
+                        top: 50%;
+                        right: 15px;
+                        transform: translateY(-50%);
+                    }
+
+                    &:hover {
+                        color: $main-color-green;
+                    }
+
+                    &:hover:after {
+                        border-color: $main-color-green transparent transparent transparent;
+                    }
+                }
+
+                .accordion-input {
+                    appearance: none;
+                    position: absolute;
+
+                    &:checked~.accordion-title {
+                        color: $main-color-green;
+                    }
+
+                    &:checked~.accordion-title::after {
+                        border-style: solid;
+                        border-width: 0px 6px 10px 6px;
+                        border-color: transparent transparent $main-color-green transparent;
+                    }
+
+                    &:checked~.accordion-text {
+                        display: block;
+                    }
+                }
+
+                .accordion-text {
+                    display: none;
+                    color: gray;
+                    font-size: 16px;
+                    padding: 15px 25px 15px 15px;
+                    line-height: 1.3em;
+                }
+            }
+        }
+
+        .faq-form {
+            width: 40%;
+            height: 100px;
+            border: 1px solid blue;
+        }
+    }
+}

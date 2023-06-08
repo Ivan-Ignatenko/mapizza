@@ -12,7 +12,7 @@
             <p>Контакти</p>
             <p>Вакансії</p>
             <p>Новини</p>
-            <p>FAQ</p>
+            <p [routerLink]="[ '/faq' ]">FAQ</p>
         </nav>
         <div class="time-delivery">
             <img src="../../../assets/images/i-header-top.svg" alt="">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="bottom">
-        <div class="header-logo">
+        <div class="header-logo" [routerLink]="[ '' ]">
             <img src="../../../assets/images/logo-pizza-red.svg" alt="">
         </div>
         <div class="menu-list">

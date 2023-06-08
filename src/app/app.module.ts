@@ -11,7 +11,7 @@ import { ActionsComponent } from './pages/actions/actions.component';
 import { KontaktyComponent } from './pages/kontakty/kontakty.component';
 import { CareerComponent } from './pages/career/career.component';
 import { NewsComponent } from './pages/news/news.component';
-import { FaqComponent } from './pages/faq/faq.component';
+// import { FaqComponent } from './pages/faq/faq.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
@@ -28,7 +28,7 @@ import { BasketComponent } from './pages/basket/basket.component';
     KontaktyComponent,
     CareerComponent,
     NewsComponent,
-    FaqComponent,
+    // FaqComponent,
     ProductComponent,
     ProductInfoComponent,
     ActionsInfoComponent,
