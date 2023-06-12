@@ -1,8 +1,8 @@
 <div class="container">
     <div class="top">
         <div class="contact">
-            <div class="logo">
-                <img src="../../../assets/images/logo-pizza-red.svg" alt="">
+            <div class="logo" [routerLink]="[ '' ]">
+                <img src="../../../assets/images/logo-pizza-red.svg" alt="Логотип">
             </div>
             <div class="phone">
                 <a href="#">+38 097 18 306 18</a>
@@ -11,23 +11,23 @@
             </div>
             <div class="social">
                 <a href="https://www.facebook.com/pizza.mammaitaliana">
-                    <img src="../../../assets/images/i-facebook.svg" alt="">
+                    <img src="../../../assets/images/i-facebook.svg" alt="Facebook">
                 </a>
                 <a href="https://www.instagram.com/_mapizza_/?igshid=NmNmNjAwNzg%3D">
-                    <img src="../../../assets/images/i-instagram.svg" alt="">
+                    <img src="../../../assets/images/i-instagram.svg" alt="Instagram">
                 </a>
                 <a href="https://www.youtube.com/watch?v=EkfysYf80Ak">
-                    <img src="../../../assets/images/i-you-tube.svg" alt="">
+                    <img src="../../../assets/images/i-you-tube.svg" alt="YouTube">
                 </a>
             </div>
             <div class="app">
                 <p>Завантажуйте додаток</p>
                 <div class="wrapper">
                     <a href="https://apps.apple.com/us/app/ma-pizza/id1596914596">
-                        <img src="../../../assets/images/app-store-download.svg" alt="">
+                        <img src="../../../assets/images/app-store-download.svg" alt="App Store">
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=com.mamaitaliano.app">
-                        <img src="../../../assets/images/google-play-download.svg" alt="">
+                        <img src="../../../assets/images/google-play-download.svg" alt="Google Play">
                     </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@
             <p>Про компанію:</p>
             <ul>
                 <li [routerLink]="[ '/about-us' ]">Про нас</li>
-                <li>Доставка та оплата</li>
+                <li [routerLink]="[ '/dostavka' ]">Доставка та оплата</li>
                 <li>Акції</li>
                 <li [routerLink]="[ '/kontakty' ]">Контакти</li>
                 <li>Вакансії</li>
@@ -71,8 +71,8 @@
         <div class="policy">Політика конфіденційності</div>
         <div class="offer">Оферта</div>
         <div class="payment">
-            <img src="../../../assets/images/visa-card.svg" alt="">
-            <img src="../../../assets/images/master-card.svg" alt="">
+            <img src="../../../assets/images/visa-card.svg" alt="Visa">
+            <img src="../../../assets/images/master-card.svg" alt="Mastercard">
         </div>
         <div class="dev">
             <a href="https://github.com/Ivan-Ignatenko" target="_blank">Розробка сайтів</a>
