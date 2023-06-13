@@ -25,6 +25,14 @@ const routes: Routes = [
   {
     path: 'career',
     loadChildren: () => import('./pages/career/career.module').then(m => m.CareerModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)
+  },
+  {
+    path: 'dogovir-publichnoyi-oferty',
+    loadChildren: () => import('./pages/dogovir-publichnoyi-oferty/dogovir-publichnoyi-oferty.module').then(m => m.DogovirPublichnoyiOfertyModule)
   }
 ];
 
