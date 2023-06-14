@@ -33,6 +33,14 @@ const routes: Routes = [
   {
     path: 'dogovir-publichnoyi-oferty',
     loadChildren: () => import('./pages/dogovir-publichnoyi-oferty/dogovir-publichnoyi-oferty.module').then(m => m.DogovirPublichnoyiOfertyModule)
+  },
+  {
+    path: 'news',
+    loadChildren: () => import('./pages/news/news.module').then(m => m.NewsModule)
+  },
+  {
+    path: 'actions',
+    loadChildren: () => import('./pages/actions/actions.module').then(m => m.ActionsModule)
   }
 ];
 

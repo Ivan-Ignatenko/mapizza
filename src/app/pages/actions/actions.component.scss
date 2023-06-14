@@ -1,0 +1,139 @@
+@import "../../shared/styles/variables";
+
+.container {
+    width: 75%;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        font-size: 45px;
+        font-weight: bolder;
+        position: relative;
+        margin-bottom: 35px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -50px;
+            width: 64px;
+            height: 54px;
+            background: url(../../../assets/images/title-decor.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+
+    .news {
+
+        .news-item {
+            margin-bottom: 60px;
+            display: flex;
+
+            .news-item-img {
+                width: 50%;
+                margin-right: 60px;
+                border-radius: 16px;
+                cursor: pointer;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 16px;
+                    transition: 0.4s;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+            .news-item-info {
+                width: 50%;
+                align-self: center;
+
+                .news-item-title {
+                    font-size: 30px;
+                    font-weight: 600;
+                    text-decoration: none;
+                    cursor: pointer;
+                    color: black;
+                    transition: 0.4s;
+
+                    &:hover {
+                        color: $main-color-green;
+                    }
+                }
+
+                .news-item-text {
+                    margin-top: 15px;
+                    font-size: 16px;
+                    line-height: 1.5em;
+                    color: gray;
+                    font-weight: 400;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .news-link {
+                    margin-top: 15px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 1.5em;
+                    letter-spacing: .05em;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    text-decoration: none;
+
+                    span {
+                        color: $main-color-red;
+                        transition: 0.4s;
+                    }
+
+                    i {
+                        position: relative;
+                        display: inline-block;
+                        margin-left: 10px;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 100%;
+                        border: 2px solid $main-color-red;
+                        transition: 0.4s;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%) rotate(-45deg);
+                            width: 5px;
+                            height: 5px;
+                            margin-left: -1px;
+                            border-right: 2px solid $main-color-red;
+                            border-bottom: 2px solid $main-color-red;
+                            transition: 0.4s;
+                        }
+                    }
+
+                    &:hover span {
+                        color: $main-color-green;
+                    }
+
+                    &:hover i {
+                        border: 2px solid $main-color-green;
+                    }
+
+                    &:hover i::before {
+                        border-right: 2px solid $main-color-green;
+                        border-bottom: 2px solid $main-color-green;
+                    }
+                }
+            }
+        }
+    }
+}
