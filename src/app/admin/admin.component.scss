@@ -1,0 +1,47 @@
+@import '../shared/styles/variables';
+
+.container {
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+
+    .tabs {
+        width: 14%;
+        text-align: center;
+
+        div {
+            text-align: center;
+            font-size: 20px;
+            border: 1px solid lightgray;
+            cursor: pointer;
+            padding: 25px;
+        }
+
+        button {
+            width: 120px;
+            height: 70px;
+            border-radius: 8px;
+            background-color: $main-color-green;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            color: white;
+
+            &:hover {
+                background-color: $main-color-red;
+            }
+        }
+
+        .active {
+            font-weight: bolder;
+            border-top: 3px solid $main-color-green;
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    .desktop {
+        width: 86%;
+        padding-left: 40px;
+    }
+}

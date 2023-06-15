@@ -12,9 +12,9 @@ import { FooterComponent } from './components/footer/footer.component';
 // import { CareerComponent } from './pages/career/career.component';
 // import { NewsComponent } from './pages/news/news.component';
 // import { FaqComponent } from './pages/faq/faq.component';
-import { ProductComponent } from './pages/product/product.component';
-import { ProductInfoComponent } from './pages/product-info/product-info.component';
-import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
+// import { ProductComponent } from './pages/product/product.component';
+// import { ProductInfoComponent } from './pages/product-info/product-info.component';
+// import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
 import { BasketComponent } from './pages/basket/basket.component';
 
 @NgModule({
@@ -29,9 +29,9 @@ import { BasketComponent } from './pages/basket/basket.component';
     // CareerComponent,
     // NewsComponent,
     // FaqComponent,
-    ProductComponent,
-    ProductInfoComponent,
-    ActionsInfoComponent,
+    // ProductComponent,
+    // ProductInfoComponent,
+    // ActionsInfoComponent,
     BasketComponent
   ],
   imports: [
