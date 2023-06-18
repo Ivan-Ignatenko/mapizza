@@ -27,13 +27,13 @@
         }
     }
 
-    .news {
+    .discounts {
 
-        .news-item {
+        .discount-item {
             margin-bottom: 60px;
             display: flex;
 
-            .news-item-img {
+            .discount-item-img {
                 width: 50%;
                 margin-right: 60px;
                 border-radius: 16px;
@@ -52,11 +52,11 @@
                 }
             }
 
-            .news-item-info {
+            .discount-item-info {
                 width: 50%;
                 align-self: center;
 
-                .news-item-title {
+                .discount-item-title {
                     font-size: 30px;
                     font-weight: 600;
                     text-decoration: none;
@@ -69,7 +69,7 @@
                     }
                 }
 
-                .news-item-text {
+                .discount-item-text {
                     margin-top: 15px;
                     font-size: 16px;
                     line-height: 1.5em;
@@ -79,7 +79,7 @@
                     text-overflow: ellipsis;
                 }
 
-                .news-link {
+                .discount-link {
                     margin-top: 15px;
                     font-size: 14px;
                     font-weight: 600;

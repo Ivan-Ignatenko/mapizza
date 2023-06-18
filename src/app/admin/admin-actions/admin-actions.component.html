@@ -1,9 +1,8 @@
 <div class="container">
     <button class="create"><b>ДОДАТИ АКЦІЮ</b></button>
     <form class="add">
-        <input name="name" type="text" placeholder="*Назва">
-        <input name="title" type="text" placeholder="*Заголовок">
-        <textarea name="description" placeholder="*Опис"></textarea>
+        <input [(ngModel)]="title" name="title" type="text" placeholder="*Заголовок">
+        <textarea [(ngModel)]="description" name="description" placeholder="*Опис"></textarea>
         <div class="add-img">
             <input name="file" id="file" type="file">
             <label for="file"></label>
@@ -14,13 +13,13 @@
             </div>
             <p class="delete-img">Видалити</p>
         </div>
-        <button type="submit"><b>ЗБЕРЕГТИ</b></button>
+        <button *ngIf="editStatus" type="button" (click)="addAction()" [disabled]="!description || !title"><b>ЗБЕРЕГТИ</b></button>
+        <button *ngIf="!editStatus" type="button" (click)="saveAction()" [disabled]="!description || !title"><b>ЗБЕРЕГТИ ОНОВЛЕННЯ</b></button>
     </form>
     <table>
         <thead>
             <tr>
                 <th>Дата</th>
-                <th>Назва</th>
                 <th>Заголовок</th>
                 <th>Опис</th>
                 <th>Картинка</th>
@@ -28,17 +27,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let data of adminActions">
                 <td class="date">27.05</td>
-                <td class="name">Акція</td>
-                <td class="title">акція-акція</td>
-                <td class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ratione?</td>
+                <td class="title">{{ data.title }}</td>
+                <td class="description">{{ data.description | slice:0:150 }}
+                    <span *ngIf="data.description.length > 150">...</span>
+                </td>
                 <td class="image">
-                    <img src="../../../assets/images/kon-birra.jpg">
+                    <img [src]="data.imagePath">
                 </td>
                 <td class="actions">
-                    <p>Редагувати</p>
-                    <p>Видалити</p>
+                    <p (click)="editAction(data)">Редагувати</p>
+                    <p (click)="deleteAction(data)">Видалити</p>
                 </td>
             </tr>
         </tbody>
