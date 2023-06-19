@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IAction } from 'src/app/shared/interfaces/actions/actions.interface';
+import { IActionResponce } from 'src/app/shared/interfaces/actions/actions.interface';
 import { ActionsService } from 'src/app/shared/services/actions/actions.service';
 
 @Component({
@@ -9,18 +9,20 @@ import { ActionsService } from 'src/app/shared/services/actions/actions.service'
 })
 export class ActionsComponent {
 
-  public userActions: IAction[] = [];
+  public userActions: IActionResponce[] = [];
 
   constructor(
     private actionsService: ActionsService
   ) { }
 
   ngOnInit(): void {
-    this.getActions();
+    this.getAllActions();
   }
 
-  getActions(): void {
-    this.userActions = this.actionsService.getActions()
+  getAllActions(): void {
+    this.actionsService.getAll().subscribe(data => {
+      this.userActions = data;
+    })
   }
 
 }

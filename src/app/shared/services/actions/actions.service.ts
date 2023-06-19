@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
-import { IAction } from '../../interfaces/actions/actions.interface';
+import { IActionRequest, IActionResponce } from '../../interfaces/actions/actions.interface';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActionsService {
 
-  private actions: Array<IAction> = [
-    {
-      id: 1,
-      title: 'Good discount',
-      description: 'bla-bla-bla, bla-bla, bla-bla vvvvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvvvvv vvvvv vvvvvvvvvvvvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvv vvvvvvvvv vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv',
-      imagePath: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzzbrB-wHcRESuzW5GMn56zcYHfa8YzvqQNZsFiAY5Dg&s'
-    }
-  ];
+  private url = environment.BACKEND_URL;
+  private api = { actions: `${this.url}/discounts` };
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  getActions(): IAction[] {
-    return this.actions;
+  getAll(): Observable<IActionResponce[]>{
+    return this.http.get<IActionResponce[]>(this.api.actions);
   }
 
-  addAction(action: IAction): void {
-    this.actions.push(action);
+  getOneAction(id: number): Observable<IActionResponce>{
+    return this.http.get<IActionResponce>(`${this.api.actions}/${id}`);
   }
 
-  updateAction(action: IAction, id: number): void{
-    const index = this.actions.findIndex(action => action.id === id);
-    this.actions.splice(index, 1, action);
+  createAction(action: IActionRequest): Observable<IActionResponce>{
+    return this.http.post<IActionResponce>(this.api.actions, action);
   }
 
-  deleteAction(id: number): void{
-    const index = this.actions.findIndex(action => action.id === id);
-    this.actions.splice(index, 1);
+  updateAction(action: IActionRequest, id: number): Observable<IActionResponce>{
+    return this.http.patch<IActionResponce>(`${this.api.actions}/${id}`, action);
+  }
+
+  deleteAction(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.api.actions}/${id}`);
   }
 }

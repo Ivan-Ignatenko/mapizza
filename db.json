@@ -1,0 +1,22 @@
+{
+  "discounts": [
+    {
+      "id": 1,
+      "title": "Good discount11",
+      "description": "bla-bla-bla, bla-bla, bla-bla ",
+      "imagePath": "https://www.mundodeportivo.com/alfabeta/hero/2022/01/shingeki-no-kyojin-cosplay-mikasa-ackerman.jpg?width=768&aspect_ratio=16:9&format=nowebp"
+    },
+    {
+      "title": "zxc",
+      "description": "zxc",
+      "imagePath": "https://www.mundodeportivo.com/alfabeta/hero/2022/01/shingeki-no-kyojin-cosplay-mikasa-ackerman.jpg?width=768&aspect_ratio=16:9&format=nowebp",
+      "id": 3
+    },
+    {
+      "title": "Нова акція!",
+      "description": "Замовляйте улюблені товари, забирайте їх самі та отримуйте смачну знижку 15%. Акція діє на піцу, салати, десерти (на напої та додаткові інгредієнти НЕ діє). При оформленні замовлення через сайт оберіть спосіб доставки «Самовивіз» і знижка 15% нарахується автоматично. Самовивіз здійснюється з закладів MA Pizza. Знижка не сумується із іншими акціями та пропозиціями.",
+      "imagePath": "https://www.mundodeportivo.com/alfabeta/hero/2022/01/shingeki-no-kyojin-cosplay-mikasa-ackerman.jpg?width=768&aspect_ratio=16:9&format=nowebp",
+      "id": 4
+    }
+  ]
+}

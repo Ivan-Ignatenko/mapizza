@@ -2,14 +2,14 @@
     <div class="title">Акції</div>
     <div class="discounts">
         <div class="discount-item" *ngFor="let data of userActions">
-            <a href="#" target="_blank" class="discount-item-img">
+            <a href="#" [routerLink]="[ '/actions', data.id ]" class="discount-item-img">
                 <img [src]="data.imagePath" alt="Акція">
             </a>
             <div class="discount-item-info">
-                <a href="#" target="_blank"
+                <a href="#" [routerLink]="[ '/actions', data.id ]"
                     class="discount-item-title">{{ data.title }}</a>
                 <p class="discount-item-text">{{ data.description }}</p>
-                <a href="#" target="_blank"
+                <a href="#" [routerLink]="[ '/actions', data.id ]"
                     class="discount-link"><span>ДІЗНАТИСЯ БІЛЬШЕ</span><i></i></a>
             </div>
         </div>

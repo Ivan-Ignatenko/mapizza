@@ -1,0 +1,48 @@
+.container {
+    width: 90%;
+    margin: 60px auto;
+
+    .banner {
+        height: 500px;
+        border-radius: 16px;
+        background-image: url('../../../../assets/images/prom-img-2.jpg');
+        background-position: 50% 50%;
+        background-size: cover;
+        text-align: center;
+        position: relative;
+        line-height: 870px;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: black;
+            opacity: 0.4;
+            left: 0;
+            top: 0;
+            border-radius: 16px;
+        }
+
+        .banner-info {
+            color: white;
+            font-size: 40px;
+            position: relative;
+            z-index: 5;
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+
+        .description {
+            width: 66%;
+            margin-top: 50px;
+            font-size: 20px;
+            font-weight: 400;
+            color: gray;
+            line-height: 1.5em;
+        }
+    }
+}

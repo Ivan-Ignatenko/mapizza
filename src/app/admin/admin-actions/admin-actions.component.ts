@@ -22,25 +22,24 @@ export class AdminActionsComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getActions();
+    this.getAllActions();
   }
 
-  getActions(): void {
-    this.adminActions = this.actionsService.getActions();
+  getAllActions(): void {
+    this.actionsService.getAll().subscribe(data => {
+      this.adminActions = data;
+    })
   }
 
   addAction(): void {
-    const newAction: IAction = {
+    const newAction = {
       title: this.title,
       description: this.description,
-      imagePath: this.imagePath,
-      id: 1
+      imagePath: this.imagePath
     };
-    if (this.adminActions.length > 0) {
-      const id = this.adminActions.slice(-1)[0].id;
-      newAction.id = id + 1;
-    }
-    this.actionsService.addAction(newAction);
+    this.actionsService.createAction(newAction).subscribe(() => {
+      this.getAllActions();
+    });
     this.title = '';
     this.description = '';
   }
@@ -53,21 +52,24 @@ export class AdminActionsComponent {
   }
 
   saveAction(): void {
-    const updateAction: IAction = {
+    const updateAction = {
       title: this.title,
       description: this.description,
-      imagePath: this.imagePath,
-      id: this.editId
+      imagePath: this.imagePath
     };
-    this.actionsService.updateAction(updateAction, this.editId);
+    this.actionsService.updateAction(updateAction, this.editId).subscribe(() => {
+      this.getAllActions();
+    });
     this.title = '';
     this.description = '';
     this.editStatus = true;
   }
 
   deleteAction(action: IAction): void {
-    if(confirm('Are you sure?')){
-      this.actionsService.deleteAction(action.id);
+    if (confirm('Are you sure?')) {
+      this.actionsService.deleteAction(action.id).subscribe(() => {
+        this.getAllActions();
+      })
     }
   }
 }
