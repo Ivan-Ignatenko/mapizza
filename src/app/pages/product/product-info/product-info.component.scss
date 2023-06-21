@@ -4,66 +4,86 @@
     width: 90%;
     margin: 30px auto;
 
+    .breadcrumb {
+        margin: 20px 0px;
+        color: gray;
+        font-size: 15px;
+
+        span {
+            cursor: pointer;
+
+            &:hover{
+                color: $main-color-green;
+            }
+
+            b {
+                color: $main-color-green;
+            }
+        }
+    }
+
     .product-detail {
-        border: 1px solid black;
         display: flex;
 
-        .droduct-detail-img {}
+        .droduct-detail-img {
+            width: 50%;
+            cursor: pointer;
+        }
 
         .product-detail-info {
+            width: 50%;
             height: 30%;
             padding: 0px 20px;
 
+            .price {
+                font-size: 16px;
+                line-height: 1em;
+                font-weight: 600;
+                margin-bottom: 10px;
+
+                .weight {
+                    color: gray;
+                    font-weight: 400;
+                }
+            }
+
             .name {
-                margin-bottom: 25px;
-                min-height: 2.6em;
+                margin-bottom: 15px;
 
                 b {
-                    font-size: 20px;
-                    transition: 0.5s;
-
-                    &:hover {
-                        color: $main-color-green;
-                    }
+                    font-size: 40px;
+                    font-weight: 600;
+                    line-height: 1.2em;
                 }
             }
 
             .description {
                 color: gray;
-                line-height: 22px;
-                height: 65px;
-                margin-bottom: 10px;
-                overflow: hidden;
-            }
-
-            .price {
-                b {
-                    font-size: 20px;
-                }
-
-                .weight {
-                    color: gray;
-                }
+                margin-bottom: 20px;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 1.5em;
             }
 
             .ordering {
-                width: 100%;
                 height: 45px;
                 display: flex;
-                justify-content: space-between;
-                margin-top: 10px;
+                align-items: center;
+                margin-bottom: 25px;
+
+                span {
+                    margin-right: 15px;
+                }
 
                 .select-quantity {
-                    width: 33%;
-                    height: 100%;
                     display: flex;
                     align-items: center;
                     border: 1px solid $border-color;
                     border-radius: 12px;
 
                     .plus {
-                        width: 30%;
-                        height: 100%;
+                        width: 46px;
+                        height: 46px;
                         font-size: 20px;
                         border-radius: 0px 12px 12px 0px;
                         cursor: pointer;
@@ -77,8 +97,8 @@
                     }
 
                     .minus {
-                        width: 30%;
-                        height: 100%;
+                        width: 46px;
+                        height: 46px;
                         font-size: 20px;
                         border-radius: 12px 0px 0px 12px;
                         cursor: pointer;
@@ -92,8 +112,8 @@
                     }
 
                     .count {
-                        width: 40%;
-                        height: 70%;
+                        width: 46px;
+                        height: 28px;
                         font-size: 20px;
                         text-align: center;
                         border-right: 1px solid $border-color;
@@ -101,29 +121,36 @@
                     }
                 }
 
-                .order {
-                    width: 55%;
-                    height: 100%;
-                    border-radius: 12px;
-                    color: white;
+
+                .total-price {
+                    font-size: 20px;
                     font-weight: 600;
-                    background-color: $main-color-red;
-                    font-size: 13px;
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    transition: 0.5s;
+                    line-height: 1em;
+                    margin-left: auto;
+                }
+            }
 
-                    &:hover {
-                        background-color: $main-color-green;
-                    }
+            .order {
+                width: 100%;
+                padding: 14px 30px;
+                border-radius: 12px;
+                color: white;
+                font-weight: 600;
+                background-color: $main-color-red;
+                font-size: 13px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
 
-                    svg {
-                        margin-left: 10px;
-                    }
+                &:hover {
+                    background-color: $main-color-green;
                 }
 
+                svg {
+                    margin-left: 10px;
+                }
             }
         }
     }
