@@ -1,8 +1,8 @@
 <div class="container">
-    <button class="create"><b>ДОДАТИ КАТЕГОРІЮ</b></button>
-    <form class="add">
-        <input name="name" type="text" placeholder="*Назва">
-        <input name="path" type="text" placeholder="*Шлях">
+    <button class="create" (click)="openForm()"><b>ДОДАТИ КАТЕГОРІЮ</b></button>
+    <form class="add" [formGroup]="categoryForm" (ngSubmit)="addCategory()" *ngIf="formStatus">
+        <input formControlName="name" name="name" type="text" placeholder="*Назва">
+        <input formControlName="path" name="path" type="text" placeholder="*Шлях">
         <div class="add-img">
             <input name="file" id="file" type="file">
             <label for="file"></label>
@@ -13,7 +13,7 @@
             </div>
             <p class="delete-img">Видалити</p>
         </div>
-        <button type="submit"><b>ЗБЕРЕГТИ</b></button>
+        <button type="submit" [disabled]="categoryForm.invalid"><b>{{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ' }}</b></button>
     </form>
     <table>
         <thead>
@@ -26,16 +26,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let data of adminCategories">
                 <td class="number"></td>
-                <td class="name">Картошка</td>
-                <td class="path">лфртошка</td>
+                <td class="name">{{ data.name }}</td>
+                <td class="path">{{ data.path }}</td>
                 <td class="image">
-                    <img src="../../../assets/images/kon-birra.jpg">
+                    <img [src]="data.imagePath">
                 </td>
                 <td class="actions">
-                    <p>Редагувати</p>
-                    <p>Видалити</p>
+                    <p (click)="editCategory(data)">Редагувати</p>
+                    <p (click)="deleteCategory(data)">Видалити</p>
                 </td>
             </tr>
         </tbody>

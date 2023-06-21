@@ -3,14 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  // firebase: {
-  //   projectId: 'monosushi-63e7f',
-  //   appId: '1:1078743359267:web:a04d5f34235294b6603696',
-  //   storageBucket: 'monosushi-63e7f.appspot.com',
-  //   apiKey: 'AIzaSyCCeOK927eSuyYT_BwlGYDxeM0UqxEa3dE',
-  //   authDomain: 'monosushi-63e7f.firebaseapp.com',
-  //   messagingSenderId: '1078743359267',
-  // },
+  firebase: {
+    projectId: 'mapizza-5b64b',
+    appId: '1:786245055193:web:d7ea0e84059b70933004c8',
+    storageBucket: 'mapizza-5b64b.appspot.com',
+    apiKey: 'AIzaSyBjh-uR7z1WNm-Pc4WJvasGUtbGFcQEseA',
+    authDomain: 'mapizza-5b64b.firebaseapp.com',
+    messagingSenderId: '786245055193',
+  },
   production: false,
   BACKEND_URL: 'http://localhost:3000'
 };
