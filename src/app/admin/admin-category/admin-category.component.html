@@ -4,14 +4,14 @@
         <input formControlName="name" name="name" type="text" placeholder="*Назва">
         <input formControlName="path" name="path" type="text" placeholder="*Шлях">
         <div class="add-img">
-            <input name="file" id="file" type="file">
+            <input name="file" id="file" type="file" (change)="upload($event)">
             <label for="file"></label>
         </div>
-        <div class="prev-image">
+        <div class="prev-image" *ngIf="isUploaded">
             <div class="img-wrapper">
-                <img src="../../../assets/images/kon-birra.jpg">
+                <img [src]="valueByControl('imagePath')">
             </div>
-            <p class="delete-img">Видалити</p>
+            <p class="delete-img" (click)="deleteImage()">Видалити</p>
         </div>
         <button type="submit" [disabled]="categoryForm.invalid"><b>{{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ' }}</b></button>
     </form>

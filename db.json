@@ -21,10 +21,28 @@
   ],
   "categories": [
     {
-      "name": "as22",
-      "path": "as22",
-      "imagePath": "https://www.mundodeportivo.com/alfabeta/hero/2022/01/shingeki-no-kyojin-cosplay-mikasa-ackerman.jpg?width=768&aspect_ratio=16:9&format=nowebp",
+      "name": "ПІЦА",
+      "path": "pizza",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-1.svg?alt=media&token=76008aeb-3859-484f-932b-93e7d803c57a",
       "id": 1
+    },
+    {
+      "name": "САЛАТИ",
+      "path": "salads",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-2.svg?alt=media&token=59bd2f79-415a-43c5-afdc-4cfb6333cb7f",
+      "id": 2
+    },
+    {
+      "name": "ДЕСЕРТИ",
+      "path": "desserts",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-3.svg?alt=media&token=3678958f-4f7d-4b08-9ff2-93c208699cde",
+      "id": 3
+    },
+    {
+      "name": "НАПОЇ",
+      "path": "drinks",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-4.svg?alt=media&token=d4de91f3-5701-4b25-8648-ab3644c2236d",
+      "id": 4
     }
   ]
 }
