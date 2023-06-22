@@ -58,7 +58,7 @@
             margin-right: 10px;
         }
 
-        .ingredients {
+        .description {
             width: 97%;
             @extend %input-style;
             margin: 20px 0px;
@@ -165,7 +165,6 @@
 
                 img {
                     width: 100px;
-                    height: 60px;
                 }
 
                 .actions {

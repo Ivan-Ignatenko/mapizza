@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IAction } from 'src/app/shared/interfaces/actions/actions.interface';
+import { IActionResponce } from 'src/app/shared/interfaces/actions/actions.interface';
 import { ActionsService } from 'src/app/shared/services/actions/actions.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActionsService } from 'src/app/shared/services/actions/actions.service'
 })
 export class AdminActionsComponent {
 
-  public adminActions: IAction[] = [];
+  public adminActions: IActionResponce[] = [];
   public title!: string;
   public description!: string;
   public imagePath: string = 'https://www.mundodeportivo.com/alfabeta/hero/2022/01/shingeki-no-kyojin-cosplay-mikasa-ackerman.jpg?width=768&aspect_ratio=16:9&format=nowebp';
@@ -44,7 +44,7 @@ export class AdminActionsComponent {
     this.description = '';
   }
 
-  editAction(action: IAction): void {
+  editAction(action: IActionResponce): void {
     this.description = action.description;
     this.title = action.title;
     this.editId = action.id;
@@ -65,7 +65,7 @@ export class AdminActionsComponent {
     this.editStatus = true;
   }
 
-  deleteAction(action: IAction): void {
+  deleteAction(action: IActionResponce): void {
     if (confirm('Are you sure?')) {
       this.actionsService.deleteAction(action.id).subscribe(() => {
         this.getAllActions();
