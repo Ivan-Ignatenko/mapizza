@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ICategoryResponce } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponce } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
@@ -28,7 +29,8 @@ export class AdminProductComponent {
     private fb: FormBuilder,
     private productService: ProductService,
     private categoryService: CategoryService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private toastr: ToastrService
   ) { };
 
   ngOnInit(): void {
@@ -70,10 +72,12 @@ export class AdminProductComponent {
     if (this.editStatus) {
       this.productService.updateProduct(this.productForm.value, this.editId).subscribe(() => {
         this.getAllProducts();
+        this.toastr.success('The product has been successfully changed');
       })
     } else {
       this.productService.createProduct(this.productForm.value).subscribe(() => {
         this.getAllProducts();
+        this.toastr.success('The product has been created successfully');
       })
     }
     this.editStatus = false;
@@ -101,6 +105,7 @@ export class AdminProductComponent {
   deleteProduct(product: IProductResponce): void {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.getAllProducts();
+      this.toastr.success('The product has been successfully removed');
     })
   };
 
