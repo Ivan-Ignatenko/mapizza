@@ -103,10 +103,12 @@ export class AdminProductComponent {
   };
 
   deleteProduct(product: IProductResponce): void {
-    this.productService.deleteProduct(product.id).subscribe(() => {
-      this.getAllProducts();
-      this.toastr.success('The product has been successfully removed');
-    })
+    if(confirm('Are you sure?')){
+      this.productService.deleteProduct(product.id).subscribe(() => {
+        this.getAllProducts();
+        this.toastr.success('The product has been successfully removed');
+      })
+    }
   };
 
   upload(event: any): void {

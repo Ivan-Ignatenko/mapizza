@@ -1,6 +1,26 @@
+@import "../../../shared/styles/variables";
+
 .container {
     width: 90%;
-    margin: 60px auto;
+    margin: 0px auto;
+
+    .breadcrumb {
+        margin: 20px 0px;
+        color: gray;
+        font-size: 15px;
+
+        span {
+            cursor: pointer;
+
+            &:hover{
+                color: $main-color-green;
+            }
+
+            b {
+                color: $main-color-green;
+            }
+        }
+    }
 
     .banner {
         height: 500px;
@@ -43,6 +63,7 @@
             font-weight: 400;
             color: gray;
             line-height: 1.5em;
+            white-space: pre-wrap;
         }
     }
 }

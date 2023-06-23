@@ -1,6 +1,9 @@
 <div class="container">
+    <div class="breadcrumb">
+        <span [routerLink]="[ '/' ]">Головна <b>&#183;</b></span><span [routerLink]="[ '/actions' ]"> Акції <b>&#183;</b></span><span> {{ action.name }}</span>
+    </div>
     <div class="banner">
-        <h1 class="banner-info">{{ action.title }}</h1>
+        <h1 class="banner-info">{{ action.name }}</h1>
     </div>
     <div class="wrapper">
         <p class="description">{{ action.description }}</p>

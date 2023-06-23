@@ -1,20 +1,19 @@
 <div class="container">
-    <button class="create"><b>ДОДАТИ АКЦІЮ</b></button>
-    <form class="add">
-        <input [(ngModel)]="title" name="title" type="text" placeholder="*Заголовок">
-        <textarea [(ngModel)]="description" name="description" placeholder="*Опис"></textarea>
+    <button class="create" (click)="openForm()"><b>ДОДАТИ АКЦІЮ</b></button>
+    <form class="add" [formGroup]="actionForm" (ngSubmit)="addAction()" *ngIf="formStatus">
+        <input formControlName="name" name="title" type="text" placeholder="*Заголовок">
+        <textarea formControlName="description" name="description" placeholder="*Опис"></textarea>
         <div class="add-img">
-            <input name="file" id="file" type="file">
+            <input name="file" id="file" type="file" (change)="upload($event)">
             <label for="file"></label>
         </div>
-        <div class="prev-image">
+        <div class="prev-image" *ngIf="isUploaded">
             <div class="img-wrapper">
-                <img src="../../../assets/images/2+11111.png">
+                <img [src]="valueByControl('imagePath')">
             </div>
-            <p class="delete-img">Видалити</p>
+            <p class="delete-img" (click)="deleteImage()">Видалити</p>
         </div>
-        <button *ngIf="editStatus" type="button" (click)="addAction()" [disabled]="!description || !title"><b>ЗБЕРЕГТИ</b></button>
-        <button *ngIf="!editStatus" type="button" (click)="saveAction()" [disabled]="!description || !title"><b>ЗБЕРЕГТИ ОНОВЛЕННЯ</b></button>
+        <button type="submit" [disabled]="actionForm.invalid"><b>{{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ' }}</b></button>
     </form>
     <table>
         <thead>
@@ -27,18 +26,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let data of adminActions">
+            <tr *ngFor="let action of adminActions">
                 <td class="date">27.05</td>
-                <td class="title">{{ data.title }}</td>
-                <td class="description">{{ data.description | slice:0:150 }}
-                    <span *ngIf="data.description.length > 150">...</span>
+                <td class="title">{{ action.name }}</td>
+                <td class="description">{{ action.description | slice:0:150 }}
+                    <span *ngIf="action.description.length > 150">...</span>
                 </td>
                 <td class="image">
-                    <img [src]="data.imagePath">
+                    <img [src]="action.imagePath">
                 </td>
                 <td class="actions">
-                    <p (click)="editAction(data)">Редагувати</p>
-                    <p (click)="deleteAction(data)">Видалити</p>
+                    <p (click)="editAction(action)">Редагувати</p>
+                    <p (click)="deleteAction(action)">Видалити</p>
                 </td>
             </tr>
         </tbody>

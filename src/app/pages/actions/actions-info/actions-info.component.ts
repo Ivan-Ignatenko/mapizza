@@ -27,5 +27,4 @@ export class ActionsInfoComponent {
       this.action = data;
     });
   }
-
 }

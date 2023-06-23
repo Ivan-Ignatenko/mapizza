@@ -23,7 +23,7 @@
             </div>
             <p class="delete-img" (click)="deleteImage()">Видалити</p>
         </div>
-        <button type="submit"><b>{{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ' }}</b></button>
+        <button type="submit" [disabled]="productForm.invalid"><b>{{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ' }}</b></button>
     </form>
     <table>
         <thead>

@@ -1,15 +1,17 @@
 <div class="container">
     <div class="title">Акції</div>
     <div class="discounts">
-        <div class="discount-item" *ngFor="let data of userActions">
-            <a href="#" [routerLink]="[ '/actions', data.id ]" class="discount-item-img">
-                <img [src]="data.imagePath" alt="Акція">
+        <div class="discount-item" *ngFor="let action of userActions">
+            <a href="#" [routerLink]="[ '/actions', action.id ]" class="discount-item-img">
+                <img [src]="action.imagePath" alt="Акція">
             </a>
             <div class="discount-item-info">
-                <a href="#" [routerLink]="[ '/actions', data.id ]"
-                    class="discount-item-title">{{ data.title }}</a>
-                <p class="discount-item-text">{{ data.description }}</p>
-                <a href="#" [routerLink]="[ '/actions', data.id ]"
+                <a href="#" [routerLink]="[ '/actions', action.id ]"
+                    class="discount-item-title">{{ action.name }}</a>
+                <p class="discount-item-text">{{ action.description | slice:0:300 }}
+                    <span *ngIf="action.description.length > 300">...</span>
+                </p>
+                <a href="#" [routerLink]="[ '/actions', action.id ]"
                     class="discount-link"><span>ДІЗНАТИСЯ БІЛЬШЕ</span><i></i></a>
             </div>
         </div>
