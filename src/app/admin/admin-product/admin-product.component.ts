@@ -40,7 +40,7 @@ export class AdminProductComponent {
   };
 
   openForm(): void {
-    this.formStatus = true;
+    this.formStatus = !this.formStatus;
   };
 
   initProductForm(): void {

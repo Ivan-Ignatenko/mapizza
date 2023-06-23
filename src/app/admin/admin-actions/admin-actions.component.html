@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let action of adminActions">
-                <td class="date">27.05</td>
+                <td class="date">{{ action.date | date: 'dd.MM' }}</td>
                 <td class="title">{{ action.name }}</td>
                 <td class="description">{{ action.description | slice:0:150 }}
                     <span *ngIf="action.description.length > 150">...</span>

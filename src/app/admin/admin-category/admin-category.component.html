@@ -26,16 +26,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let data of adminCategories">
+            <tr *ngFor="let category of adminCategories">
                 <td class="number"></td>
-                <td class="name">{{ data.name }}</td>
-                <td class="path">{{ data.path }}</td>
+                <td class="name">{{ category.name }}</td>
+                <td class="path">{{ category.path }}</td>
                 <td class="image">
-                    <img [src]="data.imagePath">
+                    <img [src]="category.imagePath">
                 </td>
                 <td class="actions">
-                    <p (click)="editCategory(data)">Редагувати</p>
-                    <p (click)="deleteCategory(data)">Видалити</p>
+                    <p (click)="editCategory(category)">Редагувати</p>
+                    <p (click)="deleteCategory(category)">Видалити</p>
                 </td>
             </tr>
         </tbody>

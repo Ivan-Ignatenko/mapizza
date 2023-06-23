@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategoryResponce } from 'src/app/shared/interfaces/category/category.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
-import { Storage, deleteObject, getDownloadURL, percentage, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-category',
@@ -15,16 +16,17 @@ export class AdminCategoryComponent {
   public categoryForm!: FormGroup;
 
   public editId!: number;
-  public editStatus = false;
-  public formStatus = false;
+  public editStatus: boolean = false;
+  public formStatus: boolean = false;
 
   public uploadPercent!: number;
-  public isUploaded = false;
+  public isUploaded: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private storage: Storage
+    private imageService: ImageService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class AdminCategoryComponent {
   }
 
   openForm(): void {
-    this.formStatus = true;
+    this.formStatus = !this.formStatus;
   }
 
   initCategoryForm(): void {
@@ -54,10 +56,12 @@ export class AdminCategoryComponent {
     if (this.editStatus) {
       this.categoryService.updateCategory(this.categoryForm.value, this.editId).subscribe(() => {
         this.getAllCategories();
+        this.toastr.success('The category has been successfully changed');
       })
     } else {
       this.categoryService.createCategory(this.categoryForm.value).subscribe(() => {
         this.getAllCategories();
+        this.toastr.success('The category has been created successfully');
       })
     }
     this.editStatus = false;
@@ -79,14 +83,17 @@ export class AdminCategoryComponent {
   }
 
   deleteCategory(category: ICategoryResponce): void {
-    this.categoryService.deleteCategory(category.id).subscribe(() => {
-      this.getAllCategories();
-    })
+    if (confirm('Are you sure?')) {
+      this.categoryService.deleteCategory(category.id).subscribe(() => {
+        this.getAllCategories();
+        this.toastr.success('The category has been successfully removed');
+      })
+    }
   }
 
   upload(event: any): void {
     const file = event.target.files[0];
-    this.uploadFile('images', file.name, file)
+    this.imageService.uploadFile('images', file.name, file)
       .then(data => {
         this.categoryForm.patchValue({
           imagePath: data
@@ -94,44 +101,25 @@ export class AdminCategoryComponent {
         this.isUploaded = true;
       })
       .catch(err => {
-        console.log(err); 
+        console.log(err);
       })
   }
 
-  async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
-    const path = `${folder}/${name}`;
-    let url = '';
-    if (file) {
-      try {
-        const storageRef = ref(this.storage, path);
-        const task = uploadBytesResumable(storageRef, file);
-        percentage(task).subscribe(data => {
-          this.uploadPercent = data.progress;
-        });
-        await task;
-        url = await getDownloadURL(storageRef);
-      } catch (e: any) {
-        console.error(e);
-      }
-    } else {
-      console.log('wrong format');
-    }
-    return Promise.resolve(url);
-  }
-
-  valueByControl(control: string): string{
+  valueByControl(control: string): string {
     return this.categoryForm.get(control)?.value;
   }
 
-  deleteImage(): void{
-    const task = ref(this.storage, this.valueByControl('imagePath'));
-    deleteObject(task).then(() => {
-      console.log('file deleted');
-      this.isUploaded = false;
-      this.uploadPercent = 0;
-      this.categoryForm.patchValue({
-        imagePath: null
-      });
-    });
+  deleteImage(): void {
+    this.imageService.deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        this.isUploaded = false;
+        this.uploadPercent = 0;
+        this.categoryForm.patchValue({
+          imagePath: null
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
   };
 }

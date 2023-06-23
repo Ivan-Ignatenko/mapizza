@@ -13,7 +13,6 @@
             <p [routerLink]="[ '/career' ]">Вакансії</p>
             <p [routerLink]="[ '/news' ]">Новини</p>
             <p [routerLink]="[ '/faq' ]">FAQ</p>
-            <!-- <a [routerLink]="[ '/path' ]" routerLinkActive="active">name</a> -->
         </nav>
         <div class="time-delivery">
             <img src="../../../assets/images/i-header-top.svg" alt="Доставка">
@@ -49,28 +48,10 @@
             <img src="../../../assets/images/logo-pizza-red.svg" alt="Логотип">
         </div>
         <div class="menu-list">
-            <div class="category">
-                <div [routerLink]="[ '/product/pizza' ]" routerLinkActive="active">
-                    <img src="../../../assets/images/i-menu-1.svg" alt="Піца">
-                    <p>ПІЦА</p>
-                </div>
-            </div>
-            <div class="category">
-                <div [routerLink]="[ '/product/salads' ]" routerLinkActive="active">
-                    <img src="../../../assets/images/i-menu-2.svg" alt="Салати">
-                    <p>САЛАТИ</p>
-                </div>
-            </div>
-            <div class="category">
-                <div [routerLink]="[ '/product/desserts' ]" routerLinkActive="active">
-                    <img src="../../../assets/images/i-menu-3.svg" alt="Десерти">
-                    <p>ДЕСЕРТИ</p>
-                </div>
-            </div>
-            <div class="category">
-                <div [routerLink]="[ '/product/drinks' ]" routerLinkActive="active">
-                    <img src="../../../assets/images/i-menu-4.svg" alt="Напої">
-                    <p>НАПОЇ</p>
+            <div class="category"  *ngFor="let category of categories">
+                <div [routerLink]="[ '/product/', category.path ]" routerLinkActive="active">
+                    <img [src]="category.imagePath" alt="Піца">
+                    <p>{{ category.name }}</p>
                 </div>
             </div>
         </div>
