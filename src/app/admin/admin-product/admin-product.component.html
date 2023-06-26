@@ -40,12 +40,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let product of adminProducts">
-                <td></td>
-                <td>{{ product.category.name }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.weight }}</td>
-                <td>{{ product.price }}</td>
+                <td class="number"></td>
+                <td class="category">{{ product.category.name }}</td>
+                <td class="name">{{ product.name }}</td>
+                <td class="description">{{ product.description }}</td>
+                <td class="weight">{{ product.weight }}</td>
+                <td class="price">{{ product.price }}</td>
                 <td class="image">
                     <img [src]="product.imagePath">
                 </td>

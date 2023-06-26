@@ -1,16 +1,15 @@
 <div class="container">
     <div class="breadcrumb">
-        <span [routerLink]="[ '/' ]">Головна <b>&#183;</b></span><span [routerLink]="[ '/product' ]"> Салати <b>&#183;</b></span><span> Капрічоза</span>
+        <span [routerLink]="[ '/' ]">Головна <b>&#183;</b></span><span [routerLink]="[ '/product' ]"> Салати <b>&#183;</b></span><span> {{ currentProduct.name }}</span>
     </div>
     <div class="product-detail">
         <div class="droduct-detail-img">
-            <img src="../../../../assets/images/salat-z-krevetkoyu.jpg" alt="Салат з креветкою">
+            <img [src]="currentProduct.imagePath" alt="currentProduct.name">
         </div>
         <div class="product-detail-info">
-            <p class="price"><b>255 грн</b><span class="weight"> / 480 г</span></p>
-            <p class="name"><b>Капрічоза</b></p>
-            <p class="description">Хамон, шинка, артишоки, сир моцарела, гриби печериці, свіжа рукола,
-                неаполітанський соус.</p>
+            <p class="price"><b>{{ currentProduct.price }} грн</b><span class="weight"> / {{ currentProduct.weight }} г</span></p>
+            <p class="name"><b>{{ currentProduct.name }}</b></p>
+            <p class="description">{{ currentProduct.description }}</p>
             <div class="ordering">
                 <span>Кількість:</span>
                 <div class="select-quantity">
@@ -39,5 +38,4 @@
             </button>
         </div>
     </div>
-    <!-- <div class="another-products"></div> -->
 </div>

@@ -48,5 +48,150 @@
       "id": 4
     }
   ],
-  "products": []
+  "products": [
+    {
+      "category": {
+        "name": "ПІЦА",
+        "path": "pizza",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-1.svg?alt=media&token=76008aeb-3859-484f-932b-93e7d803c57a",
+        "id": 1
+      },
+      "path": "z-krevetkamy",
+      "name": "З креветками",
+      "description": "Сир моцарела двох видів, коктейльні помідори, тигрова креветка, свіжа рукола, сир пармезан, соус неополітанський.",
+      "price": 300,
+      "weight": 480,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fz-krevetkamy-1.jpg?alt=media&token=9a09868f-65bd-4822-a188-db629a5cbe81",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "category": {
+        "name": "ПІЦА",
+        "path": "pizza",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-1.svg?alt=media&token=76008aeb-3859-484f-932b-93e7d803c57a",
+        "id": 1
+      },
+      "path": "kaprichoza",
+      "name": "Капрічоза",
+      "description": "Хамон, шинка, артишоки, сир моцарела, гриби печериці, свіжа рукола, неаполітанський соус.",
+      "price": 255,
+      "weight": 480,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fkaprichioza-2.jpg?alt=media&token=93feb181-6b91-4461-8078-c41c300cc669",
+      "count": 1,
+      "id": 2
+    },
+    {
+      "category": {
+        "name": "ПІЦА",
+        "path": "pizza",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-1.svg?alt=media&token=76008aeb-3859-484f-932b-93e7d803c57a",
+        "id": 1
+      },
+      "path": "verona",
+      "name": "Верона",
+      "description": "Шинка, гриби печериці, сир пармезан, трюфельна олія, свіжа рукола, сир моцарела, вершковий соус.",
+      "price": 249,
+      "weight": 430,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fverona-2.jpg?alt=media&token=50b64b85-89db-4b53-a9b6-9eef643b4260",
+      "count": null,
+      "id": 3
+    },
+    {
+      "category": {
+        "name": "ПІЦА",
+        "path": "pizza",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-1.svg?alt=media&token=76008aeb-3859-484f-932b-93e7d803c57a",
+        "id": 1
+      },
+      "path": "karne-copy-copy",
+      "name": "Кон Бірра",
+      "description": "Сир моцарела, мисливські ковбаски, куряче філе, салямі чорізо, сир дорблю, перець чилі та вершковий соус.",
+      "price": 259,
+      "weight": 420,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fkon-birra.jpg?alt=media&token=daa74847-33a0-43a4-85fb-96005a1c2d6e",
+      "count": null,
+      "id": 4
+    },
+    {
+      "category": {
+        "name": "ПІЦА",
+        "path": "pizza",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-1.svg?alt=media&token=76008aeb-3859-484f-932b-93e7d803c57a",
+        "id": 1
+      },
+      "path": "tonno-2-0",
+      "name": "Тонно",
+      "description": "Тунець консервований, цибуля маринована, каперси, сир моцарела, неаполітанський соус.",
+      "price": 245,
+      "weight": 450,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Ftonno-2.jpg?alt=media&token=6e1a5745-6953-4158-941c-ca2ca52c968a",
+      "count": null,
+      "id": 5
+    },
+    {
+      "category": {
+        "name": "САЛАТИ",
+        "path": "salads",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-2.svg?alt=media&token=59bd2f79-415a-43c5-afdc-4cfb6333cb7f",
+        "id": 2
+      },
+      "path": "salat-z-proshutto-ta-karamelizovanoyu-grusheyu",
+      "name": "Салат з хамоном",
+      "description": "Мікс салату, хамон, груша, коктейльні помідори, грецький горіх, сир дорблю, соус медово-гірчичний.",
+      "price": 199,
+      "weight": 300,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fsalat-z-hamonom.jpg?alt=media&token=dcb7391a-0cb0-4db9-8b5e-aa8d2e5a66e3",
+      "count": null,
+      "id": 6
+    },
+    {
+      "category": {
+        "name": "САЛАТИ",
+        "path": "salads",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-2.svg?alt=media&token=59bd2f79-415a-43c5-afdc-4cfb6333cb7f",
+        "id": 2
+      },
+      "path": "salat-z-tygrovoyu-krevetkoyu-ta-avokado",
+      "name": "Салат з креветкою",
+      "description": "Мікс салату, тигрова креветка, огірок, коктейльні помідори, ніжний крем-сир та соус медово-гірчичний.",
+      "price": 225,
+      "weight": 300,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fsalat-z-krevetkoyu.jpg?alt=media&token=21bab3ae-89c1-4fcd-bae1-335b53c88601",
+      "count": null,
+      "id": 7
+    },
+    {
+      "category": {
+        "name": "ДЕСЕРТИ",
+        "path": "desserts",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-3.svg?alt=media&token=3678958f-4f7d-4b08-9ff2-93c208699cde",
+        "id": 3
+      },
+      "path": "napoleon",
+      "name": "Наполеон",
+      "description": "Торт з листкових коржів за класичним рецептом, змащений вершковим заварним кремом.",
+      "price": 80,
+      "weight": 160,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fnapoleon-dlya-sajtu-1.jpg?alt=media&token=a7532bdb-8caf-4caa-8a31-4efbc3825cd8",
+      "count": null,
+      "id": 8
+    },
+    {
+      "category": {
+        "name": "НАПОЇ",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-4.svg?alt=media&token=d4de91f3-5701-4b25-8648-ab3644c2236d",
+        "id": 4
+      },
+      "path": "mors-vid-shefa",
+      "name": "Морс від Шефа",
+      "description": "Освіжаючий фірмовий напій з перетертих вишень та лимону з нотками м'яти.",
+      "price": 39,
+      "weight": 300,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fmors_vid_shefa-removebg-preview-1-1.png?alt=media&token=28795b34-08f7-41dd-ab51-12533c5b6061",
+      "count": null,
+      "id": 9
+    }
+  ]
 }

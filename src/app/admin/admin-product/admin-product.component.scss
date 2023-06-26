@@ -163,11 +163,30 @@
                     border-bottom: 2px solid gray;
                 }
 
-                img {
-                    width: 100px;
+                .number,
+                .category,
+                .price,
+                .weight{
+                    width: 5%;
+                }
+
+                .name{
+                    width: 16%;
+                }
+
+                .description{
+                    width: 42%;
+                }
+
+                .image{
+                    width: 12%;
+                    img {
+                        width: 100px;
+                    }
                 }
 
                 .actions {
+                    width: 10%;
 
                     p {
                         color: $main-color-green;
