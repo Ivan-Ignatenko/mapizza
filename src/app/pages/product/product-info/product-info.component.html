@@ -1,25 +1,28 @@
 <div class="container">
     <div class="breadcrumb">
-        <span [routerLink]="[ '/' ]">Головна <b>&#183;</b></span><span [routerLink]="[ '/product' ]"> Салати <b>&#183;</b></span><span> {{ currentProduct.name }}</span>
+        <span [routerLink]="[ '/' ]">Головна <b>&#183;</b></span><span
+            [routerLink]="[ '/product/'+currentProduct.category.path]"> {{ currentProduct.category.name }}
+            <b>&#183;</b></span><span> {{ currentProduct.name }}</span>
     </div>
     <div class="product-detail">
         <div class="droduct-detail-img">
             <img [src]="currentProduct.imagePath" alt="currentProduct.name">
         </div>
         <div class="product-detail-info">
-            <p class="price"><b>{{ currentProduct.price }} грн</b><span class="weight"> / {{ currentProduct.weight }} г</span></p>
+            <p class="price"><b>{{ currentProduct.price }} грн</b><span class="weight"> / {{ currentProduct.weight }}
+                    г</span></p>
             <p class="name"><b>{{ currentProduct.name }}</b></p>
             <p class="description">{{ currentProduct.description }}</p>
             <div class="ordering">
                 <span>Кількість:</span>
                 <div class="select-quantity">
-                    <button class="minus">-</button>
-                    <input class="count" type="text" value="1">
-                    <button class="plus">+</button>
+                    <button class="minus" (click)="productCount(currentProduct, false)">-</button>
+                    <input class="count" type="text" [value]="currentProduct.count">
+                    <button class="plus" (click)="productCount(currentProduct, true)">+</button>
                 </div>
-                <div class="total-price">255 грн</div>
+                <div class="total-price">{{ currentProduct.price * currentProduct.count }} грн</div>
             </div>
-            <button class="order">
+            <button class="order" (click)="addToBasket(currentProduct)">
                 <b>ЗАМОВИТИ</b>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

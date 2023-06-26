@@ -50,7 +50,7 @@
         <div class="menu-list">
             <div class="category"  *ngFor="let category of categories">
                 <div [routerLink]="[ '/product/', category.path ]" routerLinkActive="active">
-                    <img [src]="category.imagePath" alt="Піца">
+                    <img [src]="category.imagePath" alt="category.name">
                     <p>{{ category.name }}</p>
                 </div>
             </div>
@@ -71,8 +71,8 @@
                     <path d="M10.6181 15H10.6294" stroke="#212721" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round"></path>
                 </svg>
-                <p><b>0</b> грн</p>
-                <div class="sum">0</div>
+                <p><b>{{ total }}</b> грн</p>
+                <div class="sum">{{ totalCount }}</div>
             </div>
         </div>
     </div>

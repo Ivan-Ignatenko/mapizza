@@ -7,7 +7,8 @@ export interface IProductRequest {
     path: string;
     description: string;
     imagePath: string;
-    category: ICategoryResponce
+    category: ICategoryResponce;
+    count: number
 };
 
 export interface IProductResponce extends IProductRequest {
