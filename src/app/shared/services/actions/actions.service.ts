@@ -3,11 +3,12 @@ import { IActionRequest, IActionResponce } from '../../interfaces/actions/action
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActionsService {
+export class ActionsService implements Resolve<IActionResponce> {
 
   private url = environment.BACKEND_URL;
   private api = { actions: `${this.url}/discounts` };
@@ -36,5 +37,9 @@ export class ActionsService {
 
   deleteAction(id: number): Observable<void>{
     return this.http.delete<void>(`${this.api.actions}/${id}`);
+  }
+
+  resolve(route: ActivatedRouteSnapshot): Observable<IActionResponce>{
+    return this.http.get<IActionResponce>(`${this.api.actions}/${route.paramMap.get('id')}`);
   }
 }
