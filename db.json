@@ -193,5 +193,21 @@
       "count": null,
       "id": 9
     }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "qwerty123",
+      "fullName": "Ivan",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "qwerty123",
+      "fullName": "Petro",
+      "role": "USER"
+    }
   ]
 }
