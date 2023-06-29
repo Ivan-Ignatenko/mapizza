@@ -9,17 +9,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthorizationComponent } from './components/authorization/authorization.component';
 import { BasketComponent } from './pages/basket/basket.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+
 import { environment } from '../environments/environment';
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BasketComponent
+    BasketComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AppRoutingModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]
