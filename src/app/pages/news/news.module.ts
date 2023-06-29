@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news.component';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { NewsComponent } from './news.component';
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule
+    NewsRoutingModule,
+    SharedModule
   ]
 })
 export class NewsModule { }

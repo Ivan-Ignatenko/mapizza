@@ -5,6 +5,7 @@ import { ActionsRoutingModule } from './actions-routing.module';
 import { ActionsComponent } from './actions.component';
 import { ActionsInfoComponent } from './actions-info/actions-info.component';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ActionsInfoComponent } from './actions-info/actions-info.component';
   ],
   imports: [
     CommonModule,
-    ActionsRoutingModule
+    ActionsRoutingModule,
+    SharedModule
   ]
 })
 export class ActionsModule { }

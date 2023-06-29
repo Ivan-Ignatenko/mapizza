@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constans/role.constant';
@@ -28,6 +28,9 @@ export class AuthorizationComponent {
 
   private registerData!: IRegister;
 
+  public isRegister: boolean = false;
+  public checkPassword = false;
+
   constructor(
     private fb: FormBuilder,
     private auth: Auth,
@@ -38,9 +41,31 @@ export class AuthorizationComponent {
   ) { }
 
   ngOnInit(): void {
+    this.initAuthForm();
+    this.initRegisterForm();
+  }
+
+  initAuthForm(): void {
+    this.authForm = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
+    })
+  }
+
+  initRegisterForm(): void {
+    this.registerForm = this.fb.group({
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
+      phoneNumber: [null],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
+      confirmationPassword: [null, Validators.required]
+    })
   }
 
   loginUser(): void {
+    console.log(this.authForm);
+    
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
       this.toastr.success('User successfully logged in');
@@ -56,7 +81,7 @@ export class AuthorizationComponent {
       const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/user-profile']);
+        this.router.navigate(['/home']);
       } else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
       }
@@ -89,6 +114,31 @@ export class AuthorizationComponent {
       role: 'USER'
     };
     await setDoc(doc(this.afs, 'users', credential.user.uid), user);
+  }
+
+  openRegisterModal(): void{
+    this.isRegister = !this.isRegister;
+  }
+
+  checkConfirmedPassword(): void{
+    this.checkPassword = this.password.value === this.confirmed.value;
+    if (this.password.value !== this.confirmed.value) {
+      this.registerForm.controls['confirmationPassword'].setErrors({
+        matchError: 'The password does not match'
+      })
+    }
+  }
+
+  get password(): AbstractControl {
+    return this.registerForm.controls['password'];
+  }
+
+  get confirmed(): AbstractControl {
+    return this.registerForm.controls['confirmationPassword'];
+  }
+
+  checkVisibilityError(control: string, nameError: string): boolean | null {
+    return this.registerForm.controls[control].errors?.[nameError];
   }
 
 }

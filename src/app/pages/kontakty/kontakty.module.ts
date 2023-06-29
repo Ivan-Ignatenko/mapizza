@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { KontaktyRoutingModule } from './kontakty-routing.module';
 import { KontaktyComponent } from './kontakty.component';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { KontaktyComponent } from './kontakty.component';
   ],
   imports: [
     CommonModule,
-    KontaktyRoutingModule
+    KontaktyRoutingModule,
+    SharedModule
   ]
 })
 export class KontaktyModule { }

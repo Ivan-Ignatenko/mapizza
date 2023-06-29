@@ -19,6 +19,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     ToastrModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),

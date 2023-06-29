@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DostavkaRoutingModule } from './dostavka-routing.module';
 import { DostavkaComponent } from './dostavka.component';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { DostavkaComponent } from './dostavka.component';
   ],
   imports: [
     CommonModule,
-    DostavkaRoutingModule
+    DostavkaRoutingModule,
+    SharedModule
   ]
 })
 export class DostavkaModule { }

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ICategoryResponce } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponce } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { AuthorizationComponent } from '../authorization/authorization.component';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +22,8 @@ export class HeaderComponent {
 
   constructor(
     private categoryService: CategoryService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -57,5 +60,12 @@ export class HeaderComponent {
     this.orderService.changeBasket.subscribe(() => {
       this.loadBasket();
     })
+  }
+
+  openLoginDialog(): void{
+    this.dialog.open(AuthorizationComponent, {
+      backdropClass: 'dialog-back',
+      autoFocus: false
+    });
   }
 }
