@@ -41,6 +41,15 @@ export class AdminProductComponent {
 
   openForm(): void {
     this.formStatus = !this.formStatus;
+    this.productForm.patchValue({
+      path: '',
+      name: '',
+      description: '',
+      price: '',
+      weight: '',
+      imagePath: '',
+      category: ''
+    })
   };
 
   initProductForm(): void {
@@ -81,7 +90,6 @@ export class AdminProductComponent {
       })
     }
     this.editStatus = false;
-    this.productForm.reset();
     this.formStatus = false;
     this.isUploaded = false;
   };
@@ -103,7 +111,7 @@ export class AdminProductComponent {
   };
 
   deleteProduct(product: IProductResponce): void {
-    if(confirm('Are you sure?')){
+    if (confirm('Are you sure?')) {
       this.productService.deleteProduct(product.id).subscribe(() => {
         this.getAllProducts();
         this.toastr.success('The product has been successfully removed');

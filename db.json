@@ -78,7 +78,7 @@
       "price": 255,
       "weight": 480,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fkaprichioza-2.jpg?alt=media&token=93feb181-6b91-4461-8078-c41c300cc669",
-      "count": null,
+      "count": 1,
       "id": 2
     },
     {
@@ -94,7 +94,7 @@
       "price": 249,
       "weight": 430,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fverona-2.jpg?alt=media&token=50b64b85-89db-4b53-a9b6-9eef643b4260",
-      "count": null,
+      "count": 1,
       "id": 3
     },
     {
@@ -110,7 +110,7 @@
       "price": 259,
       "weight": 420,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fkon-birra.jpg?alt=media&token=daa74847-33a0-43a4-85fb-96005a1c2d6e",
-      "count": null,
+      "count": 1,
       "id": 4
     },
     {
@@ -126,7 +126,7 @@
       "price": 245,
       "weight": 450,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Ftonno-2.jpg?alt=media&token=6e1a5745-6953-4158-941c-ca2ca52c968a",
-      "count": null,
+      "count": 1,
       "id": 5
     },
     {
@@ -142,7 +142,7 @@
       "price": 199,
       "weight": 300,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fsalat-z-hamonom.jpg?alt=media&token=dcb7391a-0cb0-4db9-8b5e-aa8d2e5a66e3",
-      "count": null,
+      "count": 1,
       "id": 6
     },
     {
@@ -158,7 +158,7 @@
       "price": 225,
       "weight": 300,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fsalat-z-krevetkoyu.jpg?alt=media&token=21bab3ae-89c1-4fcd-bae1-335b53c88601",
-      "count": null,
+      "count": 1,
       "id": 7
     },
     {
@@ -174,7 +174,7 @@
       "price": 80,
       "weight": 160,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fnapoleon-dlya-sajtu-1.jpg?alt=media&token=a7532bdb-8caf-4caa-8a31-4efbc3825cd8",
-      "count": null,
+      "count": 1,
       "id": 8
     },
     {
@@ -190,7 +190,7 @@
       "price": 39,
       "weight": 300,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fmors_vid_shefa-removebg-preview-1-1.png?alt=media&token=28795b34-08f7-41dd-ab51-12533c5b6061",
-      "count": null,
+      "count": 1,
       "id": 9
     }
   ],

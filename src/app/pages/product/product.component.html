@@ -1,6 +1,6 @@
 <div class="container">
     <div class="banner">
-        <h1 class="title">Піца від МА</h1>
+        <h1 class="title">{{ categoryName }} від МА</h1>
     </div>
     <div class="product-cards">
         <div class="card" *ngFor="let product of userProducts">
@@ -14,11 +14,11 @@
                 <p class="price"><b>{{ product.price }} грн</b><span class="weight">/ {{ product.weight }} г</span></p>
                 <div class="ordering">
                     <div class="select-quantity">
-                        <button class="minus">-</button>
-                        <input class="count" type="text" value="1">
-                        <button class="plus">+</button>
+                        <button class="minus" (click)="productCount(product, false)">-</button>
+                        <input class="count" type="text" [value]="product.count">
+                        <button class="plus" (click)="productCount(product, true)">+</button>
                     </div>
-                    <button class="order">
+                    <button class="order" (click)="addToBasket(product)">
                         <b>ЗАМОВИТИ</b>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
