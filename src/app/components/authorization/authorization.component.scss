@@ -1,16 +1,5 @@
 @import '../../shared/styles/variables';
 
-%before-after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: 0.3s;
-    border-radius: 8px;
-}
-
 .sign-in {
     width: 600px;
     height: 500px;
@@ -31,6 +20,20 @@
         font-size: 25px;
         font-weight: bolder;
         margin-bottom: 30px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -32px;
+            width: 30px;
+            height: 26px;
+            background: url(../../../assets/images/title-decor.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
     }
 
     mat-form-field {
@@ -41,28 +44,28 @@
         width: 70%;
         height: 60px;
         font-size: 18px;
-        background-color: yellow;
+        background-color: $main-color-red;
+        color: white;
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+            background-color: $main-color-green;
+        }
+    }
+
+    .text {
+        color: gray;
     }
 
     .link {
         height: 30px;
         line-height: 30px;
         cursor: pointer;
-        position: relative;
-
-        &:after {
-            @extend %before-after;
-            border-radius: 0px;
-            transform: scaleX(0);
-            border-bottom: 3px solid yellow;
-        }
+        color: $main-color-red;
 
         &:hover {
-            color: yellow;
-        }
-
-        &:hover::after {
-            transform: scale(1);
+            color: $main-color-green;
         }
     }
 }
@@ -87,6 +90,20 @@
         font-size: 25px;
         font-weight: bolder;
         margin-bottom: 30px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -32px;
+            width: 30px;
+            height: 26px;
+            background: url(../../../assets/images/title-decor.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
     }
 
     .input-wrapper {
@@ -111,21 +128,10 @@
         height: 30px;
         line-height: 30px;
         cursor: pointer;
-        position: relative;
-
-        &:after {
-            @extend %before-after;
-            border-radius: 0px;
-            transform: scaleX(0);
-            border-bottom: 3px solid yellow;
-        }
+        color: $main-color-red;
 
         &:hover {
-            color: yellow;
-        }
-
-        &:hover::after {
-            transform: scale(1);
+            color: $main-color-green;
         }
     }
 
@@ -133,7 +139,14 @@
         width: 70%;
         height: 60px;
         font-size: 18px;
-        background-color: yellow;
+        background-color: $main-color-red;
+        cursor: pointer;
+        color: white;
+        transition: 0.5s;
+
+        &:hover{
+            background-color: $main-color-green;
+        }
     }
 
     .wrapper {
@@ -155,22 +168,12 @@
             height: 30px;
             line-height: 30px;
             cursor: pointer;
-            position: relative;
             text-align: center;
+            color: $main-color-red;
 
-            &:after {
-                @extend %before-after;
-                border-radius: 0px;
-                transform: scaleX(0);
-                border-bottom: 3px solid yellow;
-            }
 
             &:hover {
-                color: yellow;
-            }
-
-            &:hover::after {
-                transform: scale(1);
+                color: $main-color-green;
             }
         }
     }

@@ -81,7 +81,7 @@ export class AuthorizationComponent {
       const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/user-profile']);
       } else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
       }
