@@ -1,1 +1,85 @@
-<p>basket works!</p>
+<div class="container">
+    <div class="title">Оформлення замовлення</div>
+    <div class="basket">
+        <div class="basket-products">
+            <div class="product">
+                <div class="product-img">
+                    <img src="../../../assets/images/kaprichioza-2.jpg" alt="Pizza">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">
+                        <p>Капрічоза</p>
+                        <button class="delete-product"></button>
+                    </div>
+                    <div class="product-count">
+                        <div class="price">300 грн</div>
+                        <div class="select-quantity">
+                            <button class="minus">-</button>
+                            <input class="count" type="text" value="1">
+                            <button class="plus">+</button>
+                        </div>
+                        <div class="total">300 грн</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="basket-form">
+            <form>
+                <div class="form-group">
+                    <div class="form-title">Контактні дані</div>
+                    <div class="input-wrapper">
+                        <input class="small-input" type="text" placeholder="*Ваше ім'я">
+                        <input class="small-input" type="text" placeholder="*Телефон">
+                    </div>
+                    <input class="big-input" type="email" placeholder="Email (для отримання копії замовлення)">
+                </div>
+                <div class="form-group">
+                    <div class="form-title">Інформація про доставку</div>
+                    <select class="big-input">
+                        <option value="Львів">Львів</option>
+                        <option value="Зубра">Зубра</option>
+                        <option value="Сокільники">Сокільники</option>
+                    </select>
+                    <input type="text" placeholder="*Вулиця" class="big-input">
+                    <div class="input-wrapper">
+                        <input class="smallest-input" type="text" placeholder="Будинок">
+                        <input class="smallest-input" type="text" placeholder="Під'їзд">
+                        <input class="smallest-input" type="text" placeholder="Поверх">
+                        <input class="smallest-input" type="text" placeholder="Квартира">
+                    </div>
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d69244.31790915632!2d23.973633133252076!3d49.8366820606938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1suk!2sua!4v1688389677128!5m2!1suk!2sua"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-title">Параметри оплати</div>
+                    <div class="checkbox-wrapper">
+                        <label for="cash">
+                            <input type="radio" id="cash" name="payment-method" checked>Готівка</label>
+                        <label for="online">
+                            <input type="radio" id="online" name="payment-method">Онлайн оплата</label>
+                        <label for="terminal">
+                            <input type="radio" id="terminal" name="payment-method">Оплата через термінал</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="total">
+                        <p>Загальна вартість:</p>
+                        <p>300 грн</p>
+                    </div>
+                    <label for="callback">
+                        <input type="checkbox" id="callback">
+                        Зателефонуйте мені для уточнення замовлення</label>
+                    <label for="comment">
+                        <input type="checkbox" id="comment" class="check">
+                        Додати коментар
+                        <textarea class="comment" placeholder="Ваш коментар"></textarea></label>
+                </div>
+                <button type="button" class="btn">підтвердити замовлення</button>
+            </form>
+        </div>
+    </div>
+</div>
