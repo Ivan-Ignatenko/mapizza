@@ -75,7 +75,6 @@ export class HeaderComponent {
     });
   }
 
-  // closeModal(): void{}
   showModal(): void{
     if (this.basket.length > 0) {
       this.emptyBasket = false;
@@ -92,9 +91,4 @@ export class HeaderComponent {
       --product.count;
     }
   }
-
-  // changeColor(): void{
-  //   this.isBasket = !this.isBasket;
-  // }
-  
 }

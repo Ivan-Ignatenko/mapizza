@@ -2,23 +2,23 @@
     <div class="title">Оформлення замовлення</div>
     <div class="basket">
         <div class="basket-products">
-            <div class="product">
+            <div class="product" *ngFor="let product of basket">
                 <div class="product-img">
-                    <img src="../../../assets/images/kaprichioza-2.jpg" alt="Pizza">
+                    <img [src]="product.imagePath" alt="product.name">
                 </div>
                 <div class="product-info">
                     <div class="product-title">
-                        <p>Капрічоза</p>
+                        <p>{{ product.name }}</p>
                         <button class="delete-product"></button>
                     </div>
                     <div class="product-count">
-                        <div class="price">300 грн</div>
+                        <div class="price">{{ product.price }} грн</div>
                         <div class="select-quantity">
-                            <button class="minus">-</button>
-                            <input class="count" type="text" value="1">
-                            <button class="plus">+</button>
+                            <button class="minus" (click)="productCount(product, false)">-</button>
+                            <input class="count" type="text" [value]="product.count">
+                            <button class="plus" (click)="productCount(product, true)">+</button>
                         </div>
-                        <div class="total">300 грн</div>
+                        <div class="total">{{ product.price * product.count }} грн</div>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <div class="total">
                         <p>Загальна вартість:</p>
-                        <p>300 грн</p>
+                        <p>{{ totalPrice }} грн</p>
                     </div>
                     <label for="callback">
                         <input type="checkbox" id="callback">
