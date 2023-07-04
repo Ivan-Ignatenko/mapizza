@@ -15,10 +15,16 @@ export class HeaderComponent {
 
   public categories: ICategoryResponce[] = [];
 
-  private basket: IProductResponce[] = [];
+  public basket: IProductResponce[] = [];
 
   public total: number = 0;
   public totalCount: number = 0;
+
+  public modalStatus = false;
+  public emptyBasket = true;
+
+  public isBasket = false;
+  public isModal = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -68,4 +74,27 @@ export class HeaderComponent {
       autoFocus: false
     });
   }
+
+  // closeModal(): void{}
+  showModal(): void{
+    if (this.basket.length > 0) {
+      this.emptyBasket = false;
+    }
+    this.isBasket = !this.isBasket;
+    this.isModal = !this.isModal;
+    this.modalStatus = !this.modalStatus;
+  }
+
+  productCount(product: IProductResponce, value: boolean): void{
+    if(value){
+      ++product.count;
+    } else if (!value && product.count > 1){
+      --product.count;
+    }
+  }
+
+  // changeColor(): void{
+  //   this.isBasket = !this.isBasket;
+  // }
+  
 }

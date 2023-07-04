@@ -48,14 +48,14 @@
             <img src="../../../assets/images/logo-pizza-red.svg" alt="Логотип">
         </div>
         <div class="menu-list">
-            <div class="category"  *ngFor="let category of categories">
+            <div class="category" *ngFor="let category of categories">
                 <div [routerLink]="[ '/product/', category.path ]" routerLinkActive="active">
                     <img [src]="category.imagePath" alt="category.name">
                     <p>{{ category.name }}</p>
                 </div>
             </div>
         </div>
-        <div class="basket">
+        <div class="basket" (click)="showModal()">
             <div class="wrapper">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -77,3 +77,43 @@
         </div>
     </div>
 </div>
+<div class="basket-info" [ngClass]="{'showBasket': isBasket}">
+    <div class="basket-info-header">
+        <p class="title">Кошик</p>
+    </div>
+    <button class="close-basket" (click)="showModal()"></button>
+    <div class="basket-info-content">
+        <ng-template #fullBasket>
+            <div class="product-card" *ngFor="let product of basket">
+                <div class="img-wrapper">
+                    <img [src]="product.imagePath" [alt]="product.name">
+                </div>
+                <div class="product-info">
+                    <div class="top">
+                        <p class="name">{{ product.name }}</p>
+                        <img class="trash" src="../../../assets/images/trash-solid.svg" alt="trash">
+                    </div>
+                    <div class="bottom">
+                        <p class="price">{{ product.price }} грн</p>
+                        <div class="select-quantity">
+                            <button class="minus" (click)="productCount(product, false)">-</button>
+                            <input class="count" type="text" [value]="product.count">
+                            <button class="plus" (click)="productCount(product, true)">+</button>
+                        </div>
+                        <p class="price">{{ product.price * product.count }} грн</p>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <div class="empty-basket" *ngIf="emptyBasket; else fullBasket">
+            <p><b>Кошик порожній</b></p>
+            <button [routerLink]="[ '/']"><b>ПЕРЕЙТИ ДО КАТАЛОГУ</b></button>
+        </div>
+    </div>
+    <div class="basket-info-bottom">
+        <p class="total-price">Сума: {{ total }} грн</p>
+        <button class="do-ordering" [routerLink]="[ '/basket' ]" (click)="showModal()">ОФОРМИТИ
+            ЗАМОВЛЕННЯ</button>
+    </div>
+</div>
+<div class="modal" [ngClass]="{'showModal': isModal}" (click)="showModal()"></div>

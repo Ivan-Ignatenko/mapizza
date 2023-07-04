@@ -251,3 +251,268 @@
         }
     }
 }
+
+.basket-info {
+    position: fixed;
+    z-index: 120;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 540px;
+    margin: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(130%);
+    transition: .5s;
+    border: 1px solid black;
+    background-color: white;
+
+    .basket-info-header {
+        padding: 20px;
+        border-bottom: 1px solid $border-color;
+        text-align: center;
+        height: 74px;
+        position: relative;
+
+        .title {
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 1.33em;
+            position: relative;
+            display: inline-block;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -35px;
+                width: 30px;
+                height: 26px;
+                background: url(../../../assets/images/title-decor.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+        }
+    }
+
+    .close-basket {
+        background: none;
+        position: absolute;
+        top: 20px;
+        right: 18px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 2px;
+            background: black;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            width: 80%;
+            height: 2px;
+            background: black;
+        }
+    }
+
+    .basket-info-content {
+        padding: 0 15px;
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 62px);
+        overflow: auto;
+        scrollbar-width: thin;
+
+        .product-card {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            padding: 20px 0;
+            border-bottom: 1px solid $border-color;
+
+            .img-wrapper {
+                width: 120px;
+                height: 120px;
+                overflow: hidden;
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+
+            .product-info {
+                padding: 0 0 0 15px;
+                width: 100%;
+
+                .top {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .name {
+                        font-size: 20px;
+                        line-height: 1.5em;
+                        font-weight: 600;
+                        overflow: hidden;
+                    }
+
+                    .trash {
+                        width: 14px;
+                        height: 14px;
+                        cursor: pointer;
+                    }
+                }
+
+                .bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 10px;
+
+                    .select-quantity {
+                        display: flex;
+                        align-items: center;
+                        border: 1px solid $border-color;
+                        border-radius: 12px;
+
+                        .plus {
+                            width: 39px;
+                            height: 34px;
+                            font-size: 16px;
+                            border-radius: 0px 12px 12px 0px;
+                            cursor: pointer;
+                            background-color: white;
+                            transition: 0.4s;
+
+                            &:hover {
+                                background-color: $background-color;
+                                color: $main-color-green;
+                            }
+                        }
+
+                        .minus {
+                            width: 39px;
+                            height: 34px;
+                            font-size: 16px;
+                            border-radius: 12px 0px 0px 12px;
+                            cursor: pointer;
+                            background-color: white;
+                            transition: 0.4s;
+
+                            &:hover {
+                                background-color: $background-color;
+                                color: $main-color-green;
+                            }
+                        }
+
+                        .count {
+                            width: 40px;
+                            height: 24px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            text-align: center;
+                            border-right: 1px solid $border-color;
+                            border-left: 1px solid $border-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .empty-basket {
+            padding: 15px 0;
+            margin: auto 0;
+            text-align: center;
+
+            p {
+                line-height: 1.5em;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            button {
+                color: white;
+                background-color: $main-color-red;
+                border-radius: 12px;
+                font-size: 12px;
+                padding: 12px 25px;
+                cursor: pointer;
+                transition: .5s;
+
+                &:hover {
+                    background-color: $main-color-green;
+                }
+            }
+        }
+    }
+
+    .basket-info-bottom {
+        height: 62px;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid $border-color;
+
+        .total-price {
+            font-size: 20px;
+            color: gray;
+        }
+
+        .do-ordering {
+            line-height: 1.45em;
+            font-weight: 600;
+            cursor: pointer;
+            color: white;
+            background-color: $main-color-red;
+            border-radius: 12px;
+            font-size: 12px;
+            padding: 12px 25px;
+            transition: .5s;
+
+            &:hover {
+                background-color: $main-color-green;
+            }
+        }
+    }
+}
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 119;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .41);
+    transition: .5s;
+}
+
+.showBasket {
+    transform: translateX(0);
+}
+
+.showModal {
+    visibility: visible;
+    opacity: 1;
+    backdrop-filter: blur(2px);
+}
