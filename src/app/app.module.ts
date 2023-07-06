@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
-import { BasketComponent } from './pages/basket/basket.component';
 
 import { environment } from '../environments/environment';
 
@@ -26,7 +25,6 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BasketComponent,
     AuthorizationComponent
   ],
   imports: [

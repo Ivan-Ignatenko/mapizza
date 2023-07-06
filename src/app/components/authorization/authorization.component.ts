@@ -64,8 +64,6 @@ export class AuthorizationComponent {
   }
 
   loginUser(): void {
-    console.log(this.authForm);
-    
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
       this.toastr.success('User successfully logged in');

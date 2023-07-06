@@ -60,6 +60,10 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'admin-auth',
+    loadChildren: () => import('./components/admin-auth/admin-auth.module').then(m => m.AdminAuthModule)
   }
 ];
 

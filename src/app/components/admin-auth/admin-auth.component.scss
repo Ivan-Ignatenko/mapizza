@@ -1,0 +1,75 @@
+@import '../../shared/styles/variables';
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, $main-color-red, $main-color-green);
+
+    .admin-login {
+        width: 40%;
+        border-radius: 10px;
+        background-color: $background-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 100px 50px;
+
+        img {
+            width: 25%;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .link{
+                color: gray;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 1px;
+                    position: absolute;
+                    left: 0px;
+                    bottom: -2px;
+                    background-color: $main-color-green;
+                    transform: scaleX(0);
+                    transition: .5s;
+                }
+
+                &:hover {
+                    color: $main-color-green;
+                    cursor: pointer;
+                }
+
+                &:hover::before {
+                    transform: scaleX(1);
+                }
+            }
+
+            .btn {
+                width: 30%;
+                background: $main-color-red;
+                color: white;
+                cursor: pointer;
+                transition: .5s;
+
+                &:hover{
+                    background-color: $main-color-green;
+                }
+            }
+        }
+    }
+}
