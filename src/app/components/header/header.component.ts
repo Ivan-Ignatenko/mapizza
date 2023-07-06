@@ -5,6 +5,8 @@ import { IProductResponce } from 'src/app/shared/interfaces/product/product.inte
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AuthorizationComponent } from '../authorization/authorization.component';
+import { ROLE } from 'src/app/shared/constans/role.constant';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 
 @Component({
   selector: 'app-header',
@@ -20,15 +22,22 @@ export class HeaderComponent {
   public total: number = 0;
   public totalCount: number = 0;
 
-  public modalStatus = false;
-  public emptyBasket = true;
+  public modalStatus: boolean = false;
+  public emptyBasket: boolean = true;
 
-  public isBasket = false;
-  public isModal = false;
+  public cabinetStatus: boolean = false;
+
+  public isBasket: boolean = false;
+  public isModal: boolean = false;
+  public isLogin: boolean = true;
+  public loginPage: string = '';
+  public roomPage: string = '';
+  public loginUrl: string = '';
 
   constructor(
     private categoryService: CategoryService,
     private orderService: OrderService,
+    private accountService: AccountService,
     public dialog: MatDialog
   ) { }
 
@@ -36,6 +45,8 @@ export class HeaderComponent {
     this.getAllCategories();
     this.loadBasket();
     this.updateBasket();
+    this.checkUserLogin();
+    this.checkUpdateUserLogin();
   }
 
   getAllCategories(): void {
@@ -90,5 +101,31 @@ export class HeaderComponent {
     } else if (!value && product.count > 1){
       --product.count;
     }
+  }
+
+  checkUserLogin(): void{
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if(currentUser && currentUser.role === ROLE.ADMIN){
+      this.isLogin = false;
+      this.loginPage = 'Admin';
+      this.cabinetStatus = true;
+      this.loginUrl = 'admin';
+    } else if (currentUser && currentUser.role === ROLE.USER){
+      this.isLogin = false;
+      this.loginPage = 'User';
+      this.cabinetStatus = true;
+      this.loginUrl = 'user-profile';
+    } else {
+      this.isLogin = true;
+      this.loginPage = '';
+      this.cabinetStatus = false;
+      this.loginUrl = '';
+    }
+  }
+
+  checkUpdateUserLogin(): void{
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
   }
 }

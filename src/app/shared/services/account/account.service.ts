@@ -10,6 +10,7 @@ import { Observable, Subject } from 'rxjs';
 export class AccountService {
 
   public isUserLogin$ = new Subject<boolean>;
+  
   private url = environment.BACKEND_URL;
   private api = { auth: `${this.url}/auth` };
 

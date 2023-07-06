@@ -13,6 +13,7 @@
             <p [routerLink]="[ '/career' ]">Вакансії</p>
             <p [routerLink]="[ '/news' ]">Новини</p>
             <p [routerLink]="[ '/faq' ]">FAQ</p>
+            <p [routerLink]="[ '/'+loginUrl ]" *ngIf="cabinetStatus">{{ loginPage }}</p>
         </nav>
         <div class="time-delivery">
             <img src="../../../assets/images/i-header-top.svg" alt="Доставка">
@@ -29,7 +30,7 @@
                 <div class="count">0</div>
             </div>
             <div class="enter">
-                <button (click)="openLoginDialog()">
+                <button (click)="openLoginDialog()" *ngIf="isLogin">
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M10 10.5001C12.3012 10.5001 14.1667 8.6346 14.1667 6.33341C14.1667 4.03223 12.3012 2.16675 10 2.16675C7.69885 2.16675 5.83337 4.03223 5.83337 6.33341C5.83337 8.6346 7.69885 10.5001 10 10.5001Z"
@@ -40,6 +41,7 @@
                     </svg>
                     Вхід
                 </button>
+                <p class="userName" *ngIf="!isLogin">{{ loginPage }}</p>
             </div>
         </div>
     </div>

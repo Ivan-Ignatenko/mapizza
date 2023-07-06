@@ -55,7 +55,7 @@ export class AdminAuthComponent {
   loginAdmin(): void {
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
-      this.toastr.success('User successfully logged in');
+      this.toastr.success('Admin successfully logged in');
       this.authForm.reset();
     }).catch(e => {
       this.toastr.error(e.message);
