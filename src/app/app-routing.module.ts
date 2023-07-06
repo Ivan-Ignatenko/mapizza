@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './shared/guards/auth/auth.guard';
+import { AdminAuthGuard } from './shared/guards/admin-auth/admin-auth.guard';
 
 const routes: Routes = [
   {
@@ -46,6 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'user-profile',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/user-profile/user-profile.module').then(m => m.UserProfileModule)
   },
   {
@@ -58,7 +60,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
+    canActivate: [AdminAuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
