@@ -34,6 +34,8 @@ export class HeaderComponent {
   public roomPage: string = '';
   public loginUrl: string = '';
 
+  public menuIsOpen: boolean = false;
+
   constructor(
     private categoryService: CategoryService,
     private orderService: OrderService,
@@ -127,5 +129,10 @@ export class HeaderComponent {
     this.accountService.isUserLogin$.subscribe(() => {
       this.checkUserLogin();
     })
+  }
+
+  openSmallMenu(): void{
+    this.menuIsOpen = !this.menuIsOpen;
+    console.log("Hello");
   }
 }

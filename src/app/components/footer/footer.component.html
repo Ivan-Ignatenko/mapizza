@@ -1,9 +1,9 @@
 <div class="container">
     <div class="top">
         <div class="contact">
-            <div class="logo" [routerLink]="[ '' ]">
+            <a class="logo" [routerLink]="[ '' ]">
                 <img src="../../../assets/images/logo-pizza-red.svg" alt="Логотип">
-            </div>
+            </a>
             <div class="phone">
                 <a href="#">+38 097 18 306 18</a>
                 <p>нд - чт 09:30 − 21:00</p>
@@ -35,22 +35,35 @@
         <div class="menu">
             <p>Меню:</p>
             <ul>
-                <li>Піца</li>
-                <li>Салати</li>
-                <li>Десерти</li>
-                <li>Напої</li>
+                <li *ngFor="let category of categories">
+                    <a [routerLink]="[ '/product/', category.path ]">{{ category.name }}</a>
+                </li>
             </ul>
         </div>
         <div class="about-company">
             <p>Про компанію:</p>
             <ul>
-                <li [routerLink]="[ '/about-us' ]">Про нас</li>
-                <li [routerLink]="[ '/dostavka' ]">Доставка та оплата</li>
-                <li [routerLink]="[ '/actions' ]">Акції</li>
-                <li [routerLink]="[ '/kontakty' ]">Контакти</li>
-                <li [routerLink]="[ '/career' ]">Вакансії</li>
-                <li [routerLink]="[ '/news' ]">Новини</li>
-                <li [routerLink]="[ '/faq' ]">FAQ</li>
+                <li>
+                    <a [routerLink]="[ '/about-us' ]">Про нас</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/dostavka' ]">Доставка та оплата</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/actions' ]">Акції</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/kontakty' ]">Контакти</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/career' ]">Вакансії</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/news' ]">Новини</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/faq' ]">FAQ</a>
+                </li>
             </ul>
         </div>
         <div class="address">
@@ -68,8 +81,8 @@
     </div>
     <div class="bottom">
         <div class="rights">©2023 MA Pizza Всі права захищено</div>
-        <div class="policy" [routerLink]="[ '/privacy-policy' ]">Політика конфіденційності</div>
-        <div class="offer" [routerLink]="[ '/dogovir-publichnoyi-oferty' ]">Оферта</div>
+        <a class="policy" [routerLink]="[ '/privacy-policy' ]">Політика конфіденційності</a>
+        <a class="offer" [routerLink]="[ '/dogovir-publichnoyi-oferty' ]">Оферта</a>
         <div class="payment">
             <img src="../../../assets/images/visa-card.svg" alt="Visa">
             <img src="../../../assets/images/master-card.svg" alt="Mastercard">

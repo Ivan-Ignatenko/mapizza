@@ -5,15 +5,15 @@
             <p>нд - чт 09:30 − 21:00</p>
             <p>пт - сб 09:30 − 22:00</p>
         </div>
-        <nav class="pages">
-            <p [routerLink]="[ '/about-us' ]">Про нас</p>
-            <p [routerLink]="[ '/dostavka' ]">Доставка та оплата</p>
-            <p [routerLink]="[ '/actions' ]">Акції</p>
-            <p [routerLink]="[ '/kontakty' ]">Контакти</p>
-            <p [routerLink]="[ '/career' ]">Вакансії</p>
-            <p [routerLink]="[ '/news' ]">Новини</p>
-            <p [routerLink]="[ '/faq' ]">FAQ</p>
-            <p [routerLink]="[ '/'+loginUrl ]" *ngIf="cabinetStatus">{{ loginPage }}</p>
+        <nav class="pages" [ngClass]="{'isOpen': menuIsOpen}">
+            <a [routerLink]="[ '/about-us' ]">Про нас</a>
+            <a [routerLink]="[ '/dostavka' ]">Доставка та оплата</a>
+            <a [routerLink]="[ '/actions' ]">Акції</a>
+            <a [routerLink]="[ '/kontakty' ]">Контакти</a>
+            <a [routerLink]="[ '/career' ]">Вакансії</a>
+            <a [routerLink]="[ '/news' ]">Новини</a>
+            <a [routerLink]="[ '/faq' ]">FAQ</a>
+            <a [routerLink]="[ '/'+loginUrl ]" *ngIf="cabinetStatus">{{ loginPage }}</a>
         </nav>
         <div class="time-delivery">
             <img src="../../../assets/images/i-header-top.svg" alt="Доставка">
@@ -43,18 +43,52 @@
                 </button>
                 <p class="userName" *ngIf="!isLogin">{{ loginPage }}</p>
             </div>
+            <div class="enter_small_screen" (click)="openLoginDialog()">
+                <svg width="30" height="30" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 10.5001C12.3012 10.5001 14.1667 8.6346 14.1667 6.33341C14.1667 4.03223 12.3012 2.16675 10 2.16675C7.69885 2.16675 5.83337 4.03223 5.83337 6.33341C5.83337 8.6346 7.69885 10.5001 10 10.5001Z"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M17.1583 18.8333C17.1583 15.6083 13.95 13 10 13C6.05001 13 2.84167 15.6083 2.84167 18.8333"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <div class="basket_small_screen" (click)="showModal()">
+                <div class="wrapper">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.375 9.58739V8.37489C9.375 5.56239 11.6375 2.79989 14.45 2.53739C17.8 2.21239 20.625 4.84989 20.625 8.13739V9.86239"
+                            stroke="#212721" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path
+                            d="M11.25 27.5H18.75C23.775 27.5 24.675 25.4875 24.9375 23.0375L25.875 15.5375C26.2125 12.4875 25.3375 10 20 10H10C4.66253 10 3.78753 12.4875 4.12503 15.5375L5.06253 23.0375C5.32503 25.4875 6.22503 27.5 11.25 27.5Z"
+                            stroke="#212721" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M19.3694 15H19.3806" stroke="#212721" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M10.6181 15H10.6294" stroke="#212721" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                    <div class="sum">{{ totalCount }}</div>
+                </div>
+            </div>
+            <div id="menu" (click)="openSmallMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16">
+                    <path
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </div>
         </div>
     </div>
     <div class="bottom">
-        <div class="header-logo" [routerLink]="[ '' ]">
+        <a class="header-logo" [routerLink]="[ '' ]">
             <img src="../../../assets/images/logo-pizza-red.svg" alt="Логотип">
-        </div>
+        </a>
         <div class="menu-list">
             <div class="category" *ngFor="let category of categories">
-                <div [routerLink]="[ '/product/', category.path ]" routerLinkActive="active">
-                    <img [src]="category.imagePath" alt="category.name">
+                <a [routerLink]="[ '/product/', category.path ]" routerLinkActive="active">
+                    <img [src]="category.imagePath" [alt]="category.name">
                     <p>{{ category.name }}</p>
-                </div>
+                </a>
             </div>
         </div>
         <div class="basket" (click)="showModal()">

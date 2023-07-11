@@ -19,13 +19,15 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 
 import { SharedModule } from './shared/shared.module';
+// import { SwiperComponent } from './components/swiper/swiper/swiper.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    // SwiperComponent
   ],
   imports: [
     BrowserModule,

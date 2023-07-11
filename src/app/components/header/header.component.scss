@@ -1,4 +1,5 @@
 @import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
 
 %flex {
     display: flex;
@@ -8,23 +9,18 @@
 
 .container {
     width: 90%;
-    height: 170px;
     margin: 0 auto;
-    border-radius: 16px;
     position: sticky;
     top: -70px;
     z-index: 99;
 
     .top {
-        width: 100%;
         height: 70px;
         padding: 0px 10px 0px 30px;
         display: flex;
         justify-content: space-between;
 
         .info {
-            width: 12%;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -34,6 +30,7 @@
                 font-weight: bolder;
                 text-decoration: none;
                 color: $main-color-red;
+                white-space: nowrap;
 
                 &:hover {
                     color: $main-color-green;
@@ -43,46 +40,89 @@
             p {
                 font-size: 14px;
                 color: gray;
-            }
-        }
 
-        .pages {
-            width: 40%;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            p {
-                cursor: pointer;
-
-                &:hover {
-                    color: $main-color-green;
+                @include screen-1280 {
+                    display: none;
                 }
             }
         }
 
-        .time-delivery {
-            width: 20%;
-            height: 100%;
+        .pages {
             display: flex;
             align-items: center;
-            justify-content: right;
+
+            a {
+                cursor: pointer;
+                padding: 0 12px;
+                color: inherit;
+
+                &:hover {
+                    color: $main-color-green;
+                }
+
+                @include screen-1600 {
+                    padding: 0 8px;
+                }
+            }
+
+            @include screen-1280 {
+                visibility: hidden;
+                opacity: 0;
+                position: absolute;
+                top: 73px;
+                right: 0px;
+                z-index: 16;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                background: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: $box-shadow;
+                overflow: hidden;
+                transform: translateX(130%);
+                transition: .5s;
+
+                a {
+                    color: inherit;
+                    margin-bottom: 10px;
+
+                    &:hover {
+                        color: $main-color-green;
+                    }
+                }
+            }
+        }
+
+        .isOpen {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0%);
+        }
+
+        .time-delivery {
+            display: flex;
+            align-items: center;
 
             b {
                 color: $main-color-green;
             }
+
+            @include screen-1600 {
+                font-size: 14px;
+            }
+
+            @include screen-1280 {
+                display: none;
+            }
         }
 
         .wrapper {
-            width: 10%;
-            height: 100%;
             display: flex;
             justify-content: space-around;
 
             .favorites {
-                width: 50px;
-                height: 100%;
+                margin-right: 25px;
                 display: flex;
                 align-items: center;
                 position: relative;
@@ -113,7 +153,6 @@
 
             .enter {
                 width: 100px;
-                height: 100%;
                 @extend %flex;
 
                 button {
@@ -137,7 +176,7 @@
                     }
                 }
 
-                .userName{
+                .userName {
                     font-size: 22px;
                     font-weight: 600;
                     color: $main-color-green;
@@ -156,44 +195,102 @@
                         background-size: contain;
                     }
                 }
+
+                @include screen-1280 {
+                    display: none;
+                }
+            }
+
+            .enter_small_screen {
+                display: none;
+                stroke: black;
+                align-items: center;
+                margin-right: 10px;
+                cursor: pointer;
+
+                @include screen-1280 {
+                    display: flex;
+                }
+            }
+
+            .basket_small_screen {
+                display: none;
+                @extend %flex;
+                cursor: pointer;
+
+                .wrapper {
+                    @extend %flex;
+                    position: relative;
+
+                    .sum {
+                        width: 25px;
+                        height: 25px;
+                        background-color: $main-color-red;
+                        border-radius: 50%;
+                        color: white;
+                        text-align: center;
+                        line-height: 25px;
+                        position: absolute;
+                        bottom: 16px;
+                        left: 16px;
+                        font-size: 14px;
+                    }
+                }
+
+                @include screen-1280 {
+                    display: flex;
+                    margin-right: 16px;
+                }
+            }
+
+            #menu {
+                display: none;
+                cursor: pointer;
+
+                @include screen-1280 {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 10px;
+                }
             }
         }
     }
 
     .bottom {
-        width: 100%;
         height: 100px;
         background-color: $background-color;
         border-radius: 16px;
         display: flex;
+        justify-content: space-between;
         position: sticky;
         top: 0;
+        padding: 0px 30px;
 
         .header-logo {
             width: 20%;
-            height: 100%;
             @extend %flex;
 
             img {
-                width: 80%;
-                height: 90%;
+                max-width: 100%;
                 cursor: pointer;
             }
         }
 
         .menu-list {
             width: 70%;
-            height: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
 
             .category {
                 width: 24%;
-                height: 100%;
                 @extend %flex;
                 flex-direction: column;
                 text-align: center;
                 position: relative;
+
+                a {
+                    color: inherit;
+                }
 
                 p {
                     text-transform: uppercase;
@@ -227,8 +324,6 @@
         }
 
         .basket {
-            width: 10%;
-            height: 100%;
             @extend %flex;
             cursor: pointer;
 
@@ -253,6 +348,10 @@
                     left: 16px;
                     font-size: 14px;
                 }
+            }
+
+            @include screen-1280{
+                display: none;
             }
         }
     }
