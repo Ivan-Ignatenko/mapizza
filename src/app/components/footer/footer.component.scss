@@ -7,7 +7,7 @@
     margin: auto;
 
     .top {
-        height: 85%;
+        min-height: 85%;
         background-color: $background-color;
         border-radius: 16px;
         padding: 40px 60px;
@@ -25,7 +25,8 @@
             @include screen-1280 {
                 width: 100%;
                 flex-direction: row;
-                height: 80px;
+                flex-wrap: wrap;
+                gap: 20px;
             }
 
             .logo {
@@ -115,7 +116,6 @@
 
                     @include screen-1280{
                         font-size: 14px;
-                        margin-bottom: 0px;
                     }
                 }
 
@@ -129,21 +129,16 @@
                             width: 120px;
                         }
                     }
-
-                    @include screen-1280 {
-                        margin-left: 15px;
-                    }
                 }
 
                 @include screen-1280 {
-                    flex-direction: row;
+                    text-align: center;
                 }
             }
         }
 
         .menu,
         .about-company {
-            width: 25%;
 
             p {
                 font-size: 18px;
@@ -164,10 +159,13 @@
                     }
                 }
             }
+
+            @include screen-768 {
+                width: 100%;
+            }
         }
 
         .address {
-            width: 25%;
 
             p {
                 font-size: 18px;
@@ -183,19 +181,22 @@
                     color: gray;
                 }
             }
+        }
 
-            @include screen-1280 {
-                width: 29%;
-            }
+        @include screen-1024 {
+            padding: 40px 20px;
+        }
+
+        @include screen-768 {
+            gap: 20px;
         }
     }
 
     .bottom {
-        height: 15%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0px 100px;
+        padding: 10px 100px;
 
         .rights {
             color: gray;
@@ -229,5 +230,22 @@
                 }
             }
         }
+
+        @include screen-1280 {
+            padding: 10px 50px;
+        }
+
+        @include screen-1024 {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @include screen-480 {
+            padding: 10px 0px;
+        }
+    }
+
+    @include screen-1280 {
+        width: 100%;
     }
 }

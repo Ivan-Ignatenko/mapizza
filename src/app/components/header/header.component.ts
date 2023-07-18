@@ -133,6 +133,5 @@ export class HeaderComponent {
 
   openSmallMenu(): void{
     this.menuIsOpen = !this.menuIsOpen;
-    console.log("Hello");
   }
 }

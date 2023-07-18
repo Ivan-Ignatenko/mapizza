@@ -6,6 +6,7 @@
             <p>пт - сб 09:30 − 22:00</p>
         </div>
         <nav class="pages" [ngClass]="{'isOpen': menuIsOpen}">
+            <a [routerLink]="[ '' ]" class="main-page">Головна</a>
             <a [routerLink]="[ '/about-us' ]">Про нас</a>
             <a [routerLink]="[ '/dostavka' ]">Доставка та оплата</a>
             <a [routerLink]="[ '/actions' ]">Акції</a>
@@ -147,7 +148,7 @@
         </div>
     </div>
     <div class="basket-info-bottom">
-        <p class="total-price">Сума: {{ total }} грн</p>
+        <p class="total-price"><span>Сума: </span> <span>{{ total }} грн</span></p>
         <button class="do-ordering" [routerLink]="[ '/basket' ]" (click)="showModal()">ОФОРМИТИ
             ЗАМОВЛЕННЯ</button>
     </div>
