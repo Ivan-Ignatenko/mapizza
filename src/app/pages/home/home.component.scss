@@ -1,4 +1,23 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+%title-decor {
+    font-weight: bolder;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: -50px;
+        width: 64px;
+        height: 54px;
+        background: url(../../../assets/images/title-decor.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+}
 
 .container {
     width: 90%;
@@ -68,29 +87,26 @@
     .title {
         font-size: 45px;
         margin-top: 80px;
-        font-weight: bolder;
-        position: relative;
+        @extend %title-decor;
+
+        @include screen-1024 {
+            font-size: 30px;
+        }
 
         &::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: -50px;
-            width: 64px;
-            height: 54px;
-            background: url(../../../assets/images/title-decor.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+            @include screen-1024 {
+                display: none;
+            }
         }
     }
 
     .types-of-products {
         display: flex;
+        flex-wrap: wrap;
         margin-top: 30px;
 
         .name {
-            margin-right: 5px;
+            margin: 5px;
             cursor: pointer;
             border: 1px solid $border-color;
             border-radius: 12px;
@@ -110,24 +126,39 @@
     }
 
     .product-cards {
-        width: 100%;
         margin-top: 50px;
         display: flex;
         flex-wrap: wrap;
-        gap: 34px;
+
+        @include screen-1280 {
+            margin-top: 40px;
+        }
+
+        @include screen-768 {
+            margin-top: 30px;
+        }
 
         .card {
-            width: 32%;
-            height: 800px;
+            max-width: 32%;
             display: flex;
             align-items: center;
             flex-direction: column;
             border-radius: 16px;
             cursor: pointer;
             border: 1px solid $border-color;
+            margin: 1% 0.65%;
+            padding-bottom: 10px;
+
+            @include screen-768 {
+                max-width: 48%;
+                margin: 1%;
+            }
+
+            @include screen-480 {
+                max-width: 100%;
+            }
 
             .img-wrap {
-                width: 100%;
                 height: 70%;
 
                 img {
@@ -138,11 +169,13 @@
             }
 
             .info-wrap {
-                height: 30%;
                 padding: 0px 20px;
 
+                @include screen-1280 {
+                    padding: 0px 5px;
+                }
+
                 .name {
-                    margin-bottom: 25px;
                     min-height: 2.6em;
 
                     b {
@@ -151,6 +184,10 @@
 
                         &:hover {
                             color: $main-color-green;
+                        }
+
+                        @include screen-1280 {
+                            font-size: 18px;
                         }
                     }
                 }
@@ -161,28 +198,42 @@
                     height: 65px;
                     margin-bottom: 10px;
                     overflow: hidden;
+
+                    @include screen-1280 {
+                        font-size: 14px;
+                    }
                 }
 
                 .price {
                     b {
                         font-size: 20px;
+
+                        @include screen-1280 {
+                            font-size: 18px;
+                        }
                     }
 
                     .weight {
                         color: gray;
+
+                        @include screen-1280 {
+                            font-size: 16px;
+                        }
                     }
                 }
 
                 .ordering {
-                    width: 100%;
                     height: 45px;
                     display: flex;
                     justify-content: space-between;
                     margin-top: 10px;
 
+                    @include screen-1024 {
+                        height: 35px;
+                    }
+
                     .select-quantity {
                         width: 33%;
-                        height: 100%;
                         display: flex;
                         align-items: center;
                         border: 1px solid $border-color;
@@ -225,12 +276,15 @@
                             text-align: center;
                             border-right: 1px solid $border-color;
                             border-left: 1px solid $border-color;
+
+                            @include screen-1024 {
+                                font-size: 16px;
+                            }
                         }
                     }
 
                     .order {
                         width: 55%;
-                        height: 100%;
                         border-radius: 12px;
                         color: white;
                         font-weight: 600;
@@ -249,6 +303,10 @@
                         svg {
                             margin-left: 10px;
                         }
+
+                        @include screen-1024 {
+                            font-size: 11px;
+                        }
                     }
                 }
             }
@@ -256,21 +314,45 @@
     }
 
     .benefits {
-        width: 100%;
         display: flex;
         border: 1px solid $border-color;
         border-radius: 25px;
         box-shadow: $box-shadow;
-        margin-top: 100px;
-        padding: 45px 60px;
-        gap: 21px;
+        margin-top: 90px;
+        padding: 45px 0px 25px;
+        flex-wrap: wrap;
+
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-1280 {
+            margin-top: 40px;
+        }
+
+        @include screen-480 {
+            padding: 25px 0px 5px;
+        }
 
         .benefits-item {
-            width: 24%;
-            padding: 0px 28px;
+            width: 25%;
+            padding: 0px 26px;
+            margin-bottom: 20px;
+
+            @include screen-1600 {
+                padding: 0px 22px;
+            }
+
+            @include screen-1280 {
+                width: 50%;
+            }
+
+            @include screen-768 {
+                width: 100%;
+            }
 
             p {
-                font-size: 20px;
+                font-size: 18px;
                 line-height: 1.3em;
                 margin-bottom: 5px;
                 color: gray;
@@ -278,23 +360,97 @@
                 strong {
                     color: black;
                 }
+
+                @include screen-1600 {
+                    font-size: 16px;
+                }
+
+                @include screen-480 {
+                    font-size: 14px;
+                }
             }
         }
     }
 
     .about-us {
-        width: 100%;
         display: flex;
         border: 1px solid $border-color;
         border-radius: 25px;
         box-shadow: $box-shadow;
-        margin-top: 100px;
+        margin-top: 90px;
+        flex-wrap: wrap;
+
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-768 {
+            margin-top: 40px;
+        }
 
         .about-us-info {
             width: 47%;
             display: flex;
             flex-direction: column;
             padding: 25px 60px 25px 110px;
+
+            @include screen-1600 {
+                padding: 25px 50px 25px 80px;
+            }
+
+            @include screen-1440 {
+                padding: 25px 40px 25px 70px;
+            }
+
+            @include screen-1280 {
+                padding: 25px 30px 20px 40px;
+            }
+
+            @include screen-1024 {
+                width: 100%;
+                padding: 15px 30px 20px;
+            }
+
+            @include screen-480 {
+                padding: 15px;
+            }
+
+            .about-us-title {
+                font-size: 40px;
+                margin-top: 30px;
+                @extend %title-decor;
+
+                @include screen-1440 {
+                    margin-top: 0px;
+                    font-size: 34px;
+                }
+
+                @include screen-1280 {
+                    font-size: 28px;
+                }
+
+                @include screen-1024 {
+                    font-size: 26px;
+                }
+
+                @include screen-768 {
+                    font-size: 22px;
+                }
+
+                &::before {
+
+                    @include screen-1440 {
+                        width: 50px;
+                        height: 50px;
+                        top: -23px;
+                        left: -40px;
+                    }
+
+                    @include screen-1024 {
+                        display: none;
+                    }
+                }
+            }
 
             .text {
                 font-size: 20px;
@@ -306,21 +462,40 @@
                 strong {
                     color: black;
                 }
+
+                @include screen-1440 {
+                    font-size: 18px;
+                    margin-top: 15px;
+                }
+
+                @include screen-1280 {
+                    font-size: 16px;
+                }
+
+                @include screen-768 {
+                    font-size: 14px;
+                }
             }
 
             button {
-                width: 45%;
-                height: 50px;
+                width: 47%;
                 border-radius: 12px;
                 font-weight: 600;
                 background-color: $main-color-red;
-                font-size: 13px;
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
                 line-height: 50px;
                 margin-top: 25px;
                 transition: 0.5s;
+
+                @include screen-1280 {
+                    margin-top: 5px;
+                }
+
+                @include screen-480 {
+                    width: 65%;
+                }
 
                 &:hover {
                     background-color: $main-color-green;
@@ -329,12 +504,20 @@
                 p {
                     font-size: 15px;
                     color: white;
+
+                    @include screen-1440 {
+                        font-size: 13px;
+                    }
                 }
 
                 .wrapper {
-                    height: 100%;
                     padding-top: 11px;
                     margin-left: 15px;
+
+                    @include screen-1280 {
+                        padding-top: 14px;
+                        margin-left: 12px;
+                    }
 
                     div {
                         color: white;
@@ -345,6 +528,12 @@
                         font-size: 19px;
                         text-align: center;
                         line-height: 20px;
+
+                        @include screen-1280 {
+                            width: 20px;
+                            height: 20px;
+                            line-height: 14px;
+                        }
                     }
                 }
             }
@@ -352,6 +541,11 @@
 
         .about-us-img {
             width: 53%;
+
+            @include screen-1024 {
+                width: 100%;
+                order: -1;
+            }
 
             img {
                 width: 100%;
@@ -362,15 +556,26 @@
     }
 
     .inst-block {
-        width: 100%;
         border: 1px solid $border-color;
         border-radius: 25px;
         box-shadow: $box-shadow;
         display: flex;
-        margin-top: 100px;
+        margin-top: 90px;
+
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-768 {
+            margin-top: 40px;
+        }
 
         .inst-block-img {
-            width: 53%;
+            width: 51%;
+
+            @include screen-1280 {
+                display: none;
+            }
 
             img {
                 width: 100%;
@@ -380,10 +585,67 @@
         }
 
         .inst-block-info {
-            width: 47%;
+            width: 49%;
             display: flex;
             flex-direction: column;
-            padding: 25px 60px 25px 110px;
+            padding: 35px 60px 25px 85px;
+
+            @include screen-1600 {
+                padding: 35px 50px 25px 80px;
+            }
+
+            @include screen-1440 {
+                padding: 35px 40px 25px 70px;
+            }
+
+            @include screen-1280 {
+                width: 100%;
+                padding: 35px 60px 20px;
+            }
+
+            @include screen-768 {
+                padding: 20px 20px;
+            }
+
+            .inst-block-title {
+                @extend %title-decor;
+                font-size: 40px;
+
+                @include screen-1600 {
+                    font-size: 34px;
+                }
+
+                @include screen-1440 {
+                    margin-top: 0px;
+                    font-size: 32px;
+                }
+
+                @include screen-1280 {
+                    font-size: 28px;
+                }
+
+                @include screen-1024 {
+                    font-size: 26px;
+                }
+
+                @include screen-768 {
+                    font-size: 22px;
+                }
+
+                &::before {
+
+                    @include screen-1440 {
+                        width: 50px;
+                        height: 50px;
+                        top: -23px;
+                        left: -40px;
+                    }
+
+                    @include screen-1024 {
+                        display: none;
+                    }
+                }
+            }
 
             .text {
                 font-size: 20px;
@@ -391,22 +653,40 @@
                 margin-bottom: 5px;
                 color: gray;
                 margin-top: 25px;
+
+                @include screen-1440 {
+                    font-size: 18px;
+                    margin-top: 15px;
+                }
+
+                @include screen-1280 {
+                    font-size: 16px;
+                }
+
+                @include screen-768 {
+                    font-size: 14px;
+                }
             }
 
             a {
                 width: 35%;
                 height: 50px;
-                text-decoration: none;
                 border-radius: 12px;
-                font-weight: 600;
                 background-color: $main-color-red;
-                font-size: 13px;
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-top: 25px;
                 transition: 0.5s;
+
+                @include screen-1280 {
+                    margin-top: 5px;
+                }
+
+                @include screen-480 {
+                    width: 65%;
+                }
 
                 &:hover {
                     background-color: $main-color-green;
@@ -426,17 +706,34 @@
 
     .faq {
         width: 100%;
-        margin-top: 100px;
+        margin-top: 90px;
         display: flex;
         justify-content: center;
+
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-768 {
+            margin-top: 40px;
+        }
 
 
         .faq-wrapper {
             width: 70%;
             border-bottom: 1px solid $border-color;
 
+            @include screen-1280 {
+                width: 100%;
+            }
+
             .title {
                 margin: 0px 0px 30px 0px;
+
+                @include screen-768 {
+                    margin: 0px 0px 15px 0px;
+                    font-size: 22px;
+                }
             }
 
             .faq-item {
@@ -451,6 +748,15 @@
                     font-size: 20px;
                     padding: 10px 15px;
                     transition: 0.4s;
+
+                    @include screen-768 {
+                        font-size: 18px;
+                    }
+
+                    @include screen-480 {
+                        font-size: 17px;
+                        padding: 0px;
+                    }
 
                     &::after {
                         content: "";
@@ -497,6 +803,14 @@
                     color: gray;
                     font-size: 16px;
                     padding: 15px 15px;
+
+                    @include screen-768 {
+                        font-size: 14px;
+                    }
+
+                    @include screen-480 {
+                        padding: 15px 0px;
+                    }
                 }
             }
         }
@@ -504,15 +818,31 @@
 
     .seo-block {
         width: 100%;
-        margin: 100px 0px;
+        margin-top: 90px;
         display: flex;
         justify-content: center;
+
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-768 {
+            margin-top: 40px;
+        }
 
         .seo-wrapper {
             width: 70%;
 
+            @include screen-1280 {
+                width: 100%;
+            }
+
             .title {
                 margin-top: 0px;
+
+                @include screen-768 {
+                    font-size: 22px;
+                }
             }
 
             .text {
@@ -520,6 +850,19 @@
                 line-height: 1.3em;
                 margin-top: 25px;
                 color: gray;
+
+                @include screen-1024 {
+                    font-size: 18px;
+                    margin-top: 15px;
+                }
+
+                @include screen-768 {
+                    font-size: 16px;
+                }
+
+                @include screen-480 {
+                    font-size: 14px;
+                }
             }
         }
     }
