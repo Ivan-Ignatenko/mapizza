@@ -1,4 +1,5 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
 
 .container {
     width: 80%;
@@ -7,11 +8,24 @@
     align-items: center;
     flex-direction: column;
 
+    @include screen-1280 {
+        width: 100%;
+        padding: 0px 30px;
+    }
+
     .title {
-        width: 6%;
         font-size: 45px;
         font-weight: bolder;
         position: relative;
+
+        @include screen-1024 {
+            font-size: 30px;
+        }
+
+        @include screen-480 {
+            font-size: 24px;
+            text-align: center;
+        }
 
         &::before {
             content: '';
@@ -24,18 +38,33 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
+
+            @include screen-1024 {
+                display: none;
+            }
         }
     }
 
     .faq {
-        width: 100%;
         display: flex;
         margin-top: 50px;
         margin-bottom: 50px;
         justify-content: space-between;
+        align-items: flex-start;
+
+        @include screen-1024 {
+            width: 100%;
+            flex-direction: column;
+            margin-top: 30px;
+        }
 
         .accordion {
-            width: 60%;
+            width: 62%;
+
+            @include screen-1024 {
+                width: 100%;
+                margin-bottom: 30px;
+            }
 
             .accordion-item {
                 padding: 10px 0px;
@@ -47,8 +76,24 @@
                     position: relative;
                     font-weight: bolder;
                     font-size: 20px;
-                    padding: 10px 15px;
+                    padding: 10px 16px;
                     transition: 0.4s;
+
+                    @include screen-1600 {
+                        font-size: 19px;
+                    }
+
+                    @include screen-1280 {
+                        font-size: 18px;
+                    }
+
+                    @include screen-768 {
+                        padding: 10px 16px 10px 0px;
+                    }
+
+                    @include screen-480 {
+                        font-size: 16px;
+                    }
 
                     &::after {
                         content: "";
@@ -58,7 +103,7 @@
                         border-color: gray transparent transparent transparent;
                         position: absolute;
                         top: 50%;
-                        right: 15px;
+                        right: 6px;
                         transform: translateY(-50%);
                     }
 
@@ -96,6 +141,18 @@
                     font-size: 16px;
                     padding: 15px 25px 15px 15px;
                     line-height: 1.3em;
+
+                    @include screen-1024 {
+                        padding: 10px 25px 10px 15px;
+                    }
+
+                    @include screen-768 {
+                        padding: 10px 0px;
+                    }
+
+                    @include screen-480 {
+                        font-size: 14px;
+                    }
                 }
             }
 
@@ -112,10 +169,27 @@
             text-align: center;
             padding: 25px;
 
+            @include screen-1600 {
+                padding: 20px;
+            }
+
+            @include screen-1024 {
+                width: 100%;
+                flex-direction: column;
+            }
+
             .faq-form-title {
                 font-size: 30px;
                 font-weight: bolder;
                 margin-bottom: 25px;
+
+                @include screen-1280 {
+                    font-size: 28px;
+                }
+
+                @include screen-480 {
+                    font-size: 22px;
+                }
             }
 
             input {
@@ -126,8 +200,13 @@
                 padding: 0 15px;
                 border: 1px solid $border-color;
                 text-overflow: ellipsis;
+                overflow: hidden;
                 margin-bottom: 15px;
                 transition: 0.4s;
+
+                @include screen-1280 {
+                    font-size: 14px;
+                }
             }
 
             textarea {
@@ -144,18 +223,25 @@
                 resize: none;
                 overflow: auto;
                 transition: 0.4s;
+
+                @include screen-1280 {
+                    font-size: 14px;
+                }
             }
 
             input:focus,
-            textarea:focus{
+            textarea:focus {
                 border: 1px solid $main-color-green;
             }
 
             .faq-btn-wrapper {
-                width: 100%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+
+                @include screen-480 {
+                    flex-direction: column;
+                }
 
                 .upload-wrapper {
                     display: flex;
@@ -201,6 +287,15 @@
                     justify-content: center;
                     align-items: center;
                     transition: 0.5s;
+
+                    @include screen-1600 {
+                        width: 40%;
+                    }
+
+                    @include screen-480 {
+                        width: 100%;
+                        margin-top: 10px;
+                    }
 
                     &:hover {
                         background-color: $main-color-green;
