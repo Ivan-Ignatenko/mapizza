@@ -1,4 +1,5 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
 
 .container {
     width: 68%;
@@ -7,11 +8,25 @@
     align-items: center;
     flex-direction: column;
 
+    @include screen-1280 {
+        width: 100%;
+        padding: 0px 30px;
+    }
+
     .title {
         font-size: 45px;
         font-weight: bolder;
         position: relative;
         margin-bottom: 35px;
+
+        @include screen-1024 {
+            font-size: 30px;
+        }
+
+        @include screen-480 {
+            font-size: 24px;
+            text-align: center;
+        }
 
         &::before {
             content: '';
@@ -24,23 +39,37 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
+
+            @include screen-1024 {
+                display: none;
+            }
         }
     }
 
-    p{
+    p {
         margin-bottom: 25px;
         color: gray;
         font-size: 20px;
         font-weight: 400;
         line-height: 1.5em;
 
-        strong{
+        @include screen-1024 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        @include screen-768 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        strong {
             color: black;
             font-weight: 600;
         }
     }
 
-    a{
+    a {
         text-decoration: none;
         position: relative;
         color: $main-color-red;
