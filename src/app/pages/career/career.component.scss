@@ -1,9 +1,18 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
 
 %title {
     font-size: 45px;
     font-weight: bolder;
     position: relative;
+
+    @include screen-1280 {
+        font-size: 38px;
+    }
+
+    @include screen-1024 {
+        font-size: 30px;
+    }
 
     &::before {
         content: '';
@@ -16,6 +25,10 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
+
+        @include screen-1024 {
+            display: none;
+        }
     }
 }
 
@@ -29,9 +42,25 @@
         background-image: url('../../../assets/images/job-1.png.webp');
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: center;
         text-align: center;
         position: relative;
-        line-height: 870px;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        padding-bottom: 20px;
+
+        @include screen-1440 {
+            height: 400px;
+        }
+
+        @include screen-1280 {
+            height: 300px;
+        }
+
+        @include screen-768 {
+            height: 200px;
+        }
 
         &::before {
             content: "";
@@ -50,6 +79,18 @@
             font-size: 40px;
             position: relative;
             z-index: 5;
+
+            @include screen-1024 {
+                font-size: 36px;
+            }
+
+            @include screen-768 {
+                font-size: 34px;
+            }
+
+            @include screen-480 {
+                font-size: 30px;
+            }
         }
     }
 
@@ -59,16 +100,27 @@
         align-items: center;
         margin-top: 90px;
 
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-768 {
+            margin-top: 40px;
+        }
+
         .benefits-title {
-            width: 18%;
             @extend %title;
         }
 
         .wrapper {
             width: 100%;
             display: flex;
+            justify-content: space-between;
             margin-top: 35px;
-            gap: 21px;
+
+            @include screen-1024 {
+                flex-wrap: wrap;
+            }
 
             .benefits-item {
                 width: 24%;
@@ -80,12 +132,27 @@
                 align-items: center;
                 justify-content: center;
 
+                @include screen-1440 {
+                    padding: 10px 10px;
+                }
+
+                @include screen-1024 {
+                    width: 49%;
+                    margin-bottom: 30px;
+                }
+
+                @include screen-768 {
+                    width: 100%;
+                    justify-content: start;
+                    padding: 10px 10px;
+                }
+
                 img {
                     margin-right: 15px;
                 }
 
                 p {
-                    font-size: 20px;
+                    font-size: 18px;
                     line-height: 26px;
                     margin-bottom: 5px;
                 }
@@ -96,8 +163,20 @@
     .vacancy {
         margin-top: 60px;
 
+        @include screen-1024 {
+            margin-top: 30px;
+        }
+
+        @include screen-768 {
+            margin-top: 15px;
+        }
+
         .vacancy-item {
-            width: 44%;
+            width: 49%;
+
+            @include screen-768 {
+                width: 100%;
+            }
 
             .vacancy-img {
                 border-radius: 16px;
@@ -123,6 +202,10 @@
                     display: inline-block;
                     cursor: pointer;
 
+                    @include screen-768 {
+                        font-size: 18px;
+                    }
+
                     &:hover {
                         color: $main-color-green;
                     }
@@ -134,6 +217,10 @@
                     font-weight: 400;
                     font-size: 16px;
                     line-height: 1.5em;
+
+                    @include screen-768 {
+                        font-size: 14px;
+                    }
                 }
             }
         }
@@ -145,8 +232,15 @@
         align-items: center;
         margin-top: 90px;
 
+        @include screen-1280 {
+            margin-top: 75px;
+        }
+
+        @include screen-768 {
+            margin-top: 40px;
+        }
+
         .benefits_2-title {
-            width: 21%;
             @extend %title;
         }
 
@@ -154,7 +248,11 @@
             width: 100%;
             display: flex;
             margin-top: 35px;
-            gap: 21px;
+            justify-content: space-between;
+
+            @include screen-1024 {
+                flex-wrap: wrap;
+            }
 
             .benefits_2-item {
                 width: 24%;
@@ -163,17 +261,41 @@
                 box-shadow: $box-shadow;
                 overflow: hidden;
 
+                @include screen-1024 {
+                    width: 49%;
+                    margin-bottom: 30px;
+                }
+
+                @include screen-768 {
+                    width: 100%;
+                }
+
                 img {
                     width: 100%;
-                    height: 235px;
+                    height: 65%;
+
+                    @include screen-1024 {
+                        height: 75%;
+                    }
+
+                    @include screen-768 {
+                        height: 80%;
+                    }
+
+                    @include screen-480 {
+                        height: 70%;
+                    }
                 }
 
                 p {
                     font-size: 20px;
-                    line-height: 26px;
                     margin-bottom: 5px;
                     text-align: center;
                     padding: 15px 5px 20px;
+
+                    @include screen-1280 {
+                        font-size: 18px;
+                    }
                 }
             }
         }
@@ -190,6 +312,21 @@
         position: relative;
         background-color: white;
 
+        @include screen-1280 {
+            margin: 50px auto;
+            padding: 30px 0px;
+            width: 95%;
+        }
+
+        @include screen-1024 {
+            flex-direction: column;
+            width: 70%;
+        }
+
+        @include screen-768 {
+            width: 95%;
+        }
+
         .decor {
             position: absolute;
             z-index: -1;
@@ -197,12 +334,25 @@
             max-height: 230px;
             top: -90px;
             left: -110px;
+
+            @include screen-1280 {
+                display: none;
+            }
         }
 
         .contacts-block {
             width: 35%;
             border-right: 1px solid $border-color;
             padding: 30px 50px 40px 0px;
+
+            @include screen-1280 {
+                padding: 20px 30px;
+            }
+
+            @include screen-1024 {
+                width: 100%;
+                border: none;
+            }
 
             .contact-item {
                 width: 100%;
@@ -279,6 +429,10 @@
 
             .social-contact {
                 border: none;
+
+                @include screen-1024 {
+                    border-bottom: 1px solid $border-color;
+                }
             }
         }
 
@@ -287,19 +441,44 @@
             text-align: center;
             padding: 30px 60px 40px;
 
-            .form-title {
-                width: 100%;
-                margin-bottom: 20px;
-                @extend %title;
+            @include screen-1280 {
+                padding: 20px 30px;
+            }
 
-                &::before {
-                    left: -8px;
+            @include screen-1024 {
+                width: 100%;
+            }
+
+            .form-title {
+                margin-bottom: 20px;
+                font-size: 34px;
+                font-weight: bolder;
+                position: relative;
+
+                @include screen-1600 {
+                    font-size: 32px;
+                }
+
+                @include screen-1440 {
+                    font-size: 28px;
+                }
+
+                @include screen-1280 {
+                    font-size: 24px;
+                }
+
+                @include screen-768 {
+                    font-size: 22px;
                 }
             }
 
             .wrapper {
                 display: flex;
                 gap: 10px;
+
+                @include screen-768 {
+                    flex-direction: column;
+                }
             }
 
             input {
@@ -340,6 +519,10 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+
+                @include screen-480 {
+                    flex-direction: column;
+                }
 
                 .upload-wrapper {
                     display: flex;
@@ -385,6 +568,11 @@
                     justify-content: center;
                     align-items: center;
                     transition: 0.5s;
+
+                    @include screen-480 {
+                        width: 100%;
+                        margin-top: 10px;
+                    }
 
                     &:hover {
                         background-color: $main-color-green;
