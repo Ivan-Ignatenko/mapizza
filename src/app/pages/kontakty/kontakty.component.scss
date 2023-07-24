@@ -1,4 +1,5 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
 
 .contacts-section {
     width: 80%;
@@ -11,22 +12,47 @@
     position: relative;
     background-color: white;
 
+    @include screen-1280 {
+        margin: 50px auto;
+        padding: 30px 0px;
+        width: 95%;
+    }
+
+    @include screen-1024 {
+        flex-direction: column;
+        width: 70%;
+    }
+
+    @include screen-768 {
+        width: 95%;
+    }
+
     .decor {
         position: absolute;
         z-index: -1;
-        max-width: 230px;
-        max-height: 230px;
         top: -90px;
         left: -110px;
+
+        @include screen-1280 {
+            display: none;
+        }
     }
 
     .contacts-block {
         width: 35%;
         border-right: 1px solid $border-color;
-        padding: 30px 50px 40px 0px;
+        padding: 30px 30px 40px 0px;
+
+        @include screen-1280 {
+            padding: 20px 30px;
+        }
+
+        @include screen-1024 {
+            width: 100%;
+            border: none;
+        }
 
         .contact-item {
-            width: 100%;
             padding: 15px 0px;
             border-bottom: 1px solid $border-color;
 
@@ -41,11 +67,10 @@
             }
 
             .contact {
-                width: 100%;
                 display: flex;
 
                 img {
-                    margin-right: 20px;
+                    margin-right: 15px;
                 }
 
                 .phone,
@@ -100,6 +125,10 @@
 
         .social-contact {
             border: none;
+
+            @include screen-1024 {
+                border-bottom: 1px solid $border-color;
+            }
         }
     }
 
@@ -107,31 +136,42 @@
         width: 65%;
         text-align: center;
         padding: 30px 60px 40px;
+        position: relative;
+
+        @include screen-1280 {
+            padding: 20px 30px;
+        }
+
+        @include screen-1024 {
+            width: 100%;
+        }
 
         .form-title {
-            width: 100%;
             font-size: 45px;
             font-weight: bolder;
             position: relative;
             margin-bottom: 20px;
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: -30px;
-                left: 26px;
-                width: 64px;
-                height: 54px;
-                background: url(../../../assets/images/title-decor.svg);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: contain;
+            @include screen-1600 {
+                font-size: 34px;
+            }
+
+            @include screen-1280 {
+                font-size: 24px;
+            }
+
+            @include screen-768 {
+                font-size: 22px;
             }
         }
 
         .wrapper {
             display: flex;
             gap: 10px;
+
+            @include screen-768 {
+                flex-direction: column;
+            }
         }
 
         input {
@@ -168,10 +208,13 @@
         }
 
         .faq-btn-wrapper {
-            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            @include screen-480 {
+                flex-direction: column;
+            }
 
             .upload-wrapper {
                 display: flex;
@@ -217,6 +260,11 @@
                 justify-content: center;
                 align-items: center;
                 transition: 0.5s;
+
+                @include screen-480 {
+                    width: 100%;
+                    margin-top: 10px;
+                }
 
                 &:hover {
                     background-color: $main-color-green;
