@@ -136,7 +136,6 @@
         width: 65%;
         text-align: center;
         padding: 30px 60px 40px;
-        position: relative;
 
         @include screen-1280 {
             padding: 20px 30px;
@@ -149,7 +148,6 @@
         .form-title {
             font-size: 45px;
             font-weight: bolder;
-            position: relative;
             margin-bottom: 20px;
 
             @include screen-1600 {
