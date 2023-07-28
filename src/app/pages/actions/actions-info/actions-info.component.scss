@@ -1,8 +1,9 @@
 @import "../../../shared/styles/variables";
+@import "../../../shared/styles/mixins";
 
 .container {
     width: 90%;
-    margin: 0px auto;
+    margin: 0px auto 50px;
 
     .breadcrumb {
         margin: 20px 0px;
@@ -20,6 +21,14 @@
                 color: $main-color-green;
             }
         }
+
+        @include screen-1024 {
+            display: none;
+        }
+    }
+
+    @include screen-1024 {
+        margin: 50px auto;
     }
 
     .banner {
@@ -30,7 +39,22 @@
         background-size: cover;
         text-align: center;
         position: relative;
-        line-height: 870px;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        padding-bottom: 20px;
+
+        @include screen-1440 {
+            height: 400px;
+        }
+
+        @include screen-1280 {
+            height: 300px;
+        }
+
+        @include screen-768 {
+            height: 200px;
+        }
 
         &::before {
             content: "";
@@ -49,6 +73,18 @@
             font-size: 40px;
             position: relative;
             z-index: 5;
+
+            @include screen-1024 {
+                font-size: 36px;
+            }
+
+            @include screen-768 {
+                font-size: 30px;
+            }
+
+            @include screen-480 {
+                font-size: 24px;
+            }
         }
     }
 
@@ -57,13 +93,27 @@
         justify-content: center;
 
         .description {
-            width: 66%;
+            width: 70%;
             margin-top: 50px;
             font-size: 20px;
             font-weight: 400;
             color: gray;
             line-height: 1.5em;
             white-space: pre-wrap;
+
+            @include screen-1280 {
+                font-size: 18px;
+            }
+
+            @include screen-1024 {
+                margin-top: 30px;
+                width: 100%;
+            }
+
+            @include screen-768 {
+                font-size: 16px;
+                margin-top: 15px;
+            }
         }
     }
 }
