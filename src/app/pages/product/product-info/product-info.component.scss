@@ -1,8 +1,13 @@
 @import "../../../shared/styles/variables";
+@import "../../../shared/styles/mixins";
 
 .container {
     width: 90%;
     margin: 30px auto;
+
+    @include screen-1280 {
+        width: 98%;
+    }
 
     .breadcrumb {
         margin: 20px 0px;
@@ -20,21 +25,38 @@
                 color: $main-color-green;
             }
         }
+
+        @include screen-1024 {
+            display: none;
+        }
     }
 
     .product-detail {
         display: flex;
+        flex-wrap: wrap;
 
         .droduct-detail-img {
             width: 50%;
             cursor: pointer;
             text-align: center;
+
+            img {
+                width: 70%;
+            }
+
+            @include screen-768 {
+                width: 100%;
+            }
         }
 
         .product-detail-info {
             width: 50%;
-            height: 30%;
             padding: 0px 20px;
+
+            @include screen-768 {
+                width: 100%;
+                margin-top: 15px;
+            }
 
             .price {
                 font-size: 16px;
@@ -55,6 +77,18 @@
                     font-size: 40px;
                     font-weight: 600;
                     line-height: 1.2em;
+
+                    @include screen-1440 {
+                        font-size: 34px;
+                    }
+
+                    @include screen-1280 {
+                        font-size: 28px;
+                    }
+
+                    @include screen-1024 {
+                        font-size: 26px;
+                    }
                 }
             }
 
@@ -64,6 +98,10 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 1.5em;
+
+                @include screen-1024 {
+                    font-size: 14px;
+                }
             }
 
             .ordering {
@@ -91,6 +129,11 @@
                         background-color: white;
                         transition: 0.4s;
 
+                        @include screen-480 {
+                            width: 36px;
+                            height: 36px;
+                        }
+
                         &:hover {
                             background-color: $background-color;
                             color: $main-color-green;
@@ -106,6 +149,11 @@
                         background-color: white;
                         transition: 0.4s;
 
+                        @include screen-480 {
+                            width: 36px;
+                            height: 36px;
+                        }
+
                         &:hover {
                             background-color: $background-color;
                             color: $main-color-green;
@@ -119,6 +167,12 @@
                         text-align: center;
                         border-right: 1px solid $border-color;
                         border-left: 1px solid $border-color;
+
+                        @include screen-480 {
+                            width: 36px;
+                            height: 26px;
+                            font-size: 18px;
+                        }
                     }
                 }
 
@@ -128,6 +182,10 @@
                     font-weight: 600;
                     line-height: 1em;
                     margin-left: auto;
+
+                    @include screen-1440 {
+                        font-size: 18px;
+                    }
                 }
             }
 
