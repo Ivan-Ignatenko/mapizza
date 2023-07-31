@@ -1,4 +1,5 @@
 @import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
 
 %input {
     font-size: 16px;
@@ -10,23 +11,42 @@
     text-overflow: ellipsis;
     transition: 0.3s;
 
+    @include screen-768 {
+        height: 44px;
+        font-size: 14px;
+        line-height: 44px;
+    }
+
     &:focus {
         border: 1px solid $main-color-green;
     }
 }
 
 .container {
-    width: 75%;
+    width: 80%;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include screen-1280 {
+        width: 100%;
+    }
 
     .title {
         font-size: 45px;
         font-weight: bolder;
         position: relative;
         margin-bottom: 35px;
+
+        @include screen-1024 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        @include screen-768 {
+            font-size: 24px;
+        }
 
         &::before {
             content: '';
@@ -39,17 +59,31 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
+
+            @include screen-1024 {
+                display: none;
+            }
         }
     }
 
     .basket {
         display: flex;
-        width: 100%;
         justify-content: space-between;
         align-items: flex-start;
+        flex-wrap: wrap;
 
         .basket-products {
             width: 46%;
+            padding-left: 30px;
+
+            @include screen-1024 {
+                width: 100%;
+                padding: 0px 30px;
+            }
+
+            @include screen-480 {
+                padding: 0px 15px;
+            }
 
             .product {
                 display: flex;
@@ -58,19 +92,20 @@
 
                 .product-img {
                     width: 140px;
-                    height: 140px;
+                    overflow: hidden;
 
                     img {
                         max-width: 100%;
-                        max-height: 100%;
                     }
                 }
 
                 .product-info {
                     width: 100%;
-                    display: flex;
-                    flex-direction: column;
                     padding-left: 15px;
+
+                    @include screen-480 {
+                        padding-left: 10px;
+                    }
 
                     .product-title {
                         display: flex;
@@ -121,6 +156,13 @@
                         justify-content: space-between;
                         align-items: center;
 
+                        .price,
+                        .total {
+                            @include screen-480 {
+                                font-size: 14px;
+                            }
+                        }
+
                         .select-quantity {
                             display: flex;
                             align-items: center;
@@ -140,6 +182,11 @@
                                     background-color: $background-color;
                                     color: $main-color-green;
                                 }
+
+                                @include screen-480 {
+                                    width: 30px;
+                                    height: 28px;
+                                }
                             }
 
                             .minus {
@@ -155,6 +202,11 @@
                                     background-color: $background-color;
                                     color: $main-color-green;
                                 }
+
+                                @include screen-480 {
+                                    width: 30px;
+                                    height: 28px;
+                                }
                             }
 
                             .count {
@@ -164,6 +216,11 @@
                                 text-align: center;
                                 border-right: 1px solid $border-color;
                                 border-left: 1px solid $border-color;
+
+                                @include screen-480 {
+                                    width: 26px;
+                                    height: 22px;
+                                }
                             }
                         }
                     }
@@ -173,45 +230,81 @@
         }
 
         .basket-form {
-            width: 46%;
+            width: 48%;
             box-shadow: $box-shadow;
+            border: 1px solid $border-color;
             border-radius: 16px;
-            padding: 30px 40px 40px;
+            padding: 15px 40px 40px;
             position: relative;
+
+            @include screen-1280 {
+                margin: 0px 15px;
+            }
+
+            @include screen-1024 {
+                width: 100%;
+                padding: 15px 30px;
+            }
+
+            @include screen-480 {
+                padding: 15px;
+            }
 
             .form-title {
                 font-weight: 600;
-                margin-bottom: 15px;
+                margin-top: 15px;
                 font-size: 25px;
                 line-height: 1.33em;
+
+                @include screen-768 {
+                    font-size: 24px;
+                }
+
+                @include screen-480 {
+                    font-size: 20px;
+                }
             }
 
             .input-wrapper {
-                width: 100%;
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: 15px;
+                flex-wrap: wrap;
+                margin-top: 15px;
+
+                @include screen-768 {
+                    margin-top: 0px
+                }
 
                 .small-input {
                     @extend %input;
                     width: 49%;
+
+                    @include screen-768 {
+                        width: 100%; 
+                        margin-top: 15px;
+                    }
                 }
 
                 .smallest-input {
                     @extend %input;
                     width: 24%;
+
+                    @include screen-768 {
+                        width: 49%;
+                        margin-top: 15px;
+                    }
                 }
             }
 
             .big-input {
                 width: 100%;
-                margin-bottom: 15px;
+                margin-top: 15px;
                 @extend %input;
             }
 
             .map {
                 height: 250px;
-                margin-bottom: 15px;
+                margin: 15px 0px;
 
                 iframe {
                     width: 100%;
@@ -222,6 +315,7 @@
 
             .checkbox-wrapper {
                 display: flex;
+                flex-wrap: wrap;
                 margin-bottom: 30px;
 
                 input {
@@ -243,6 +337,10 @@
                 display: flex;
                 justify-content: space-between;
                 font-size: 125%;
+
+                @include screen-768 {
+                    padding: 10px 0px;
+                }
             }
 
             label {
@@ -250,7 +348,6 @@
                 margin-top: 10px;
                 font-size: 16px;
                 cursor: pointer;
-                z-index: 2;
             }
 
             input[type="checkbox"] {
@@ -297,7 +394,7 @@
                 text-transform: uppercase;
                 transition: 0.5s;
 
-                &:hover{
+                &:hover {
                     background-color: $main-color-green;
                 }
             }
