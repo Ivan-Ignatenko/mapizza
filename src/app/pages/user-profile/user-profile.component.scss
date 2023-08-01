@@ -101,5 +101,9 @@
 
     .desktop {
         width: 80%;
+
+        @include screen-1024 {
+            width: 100%;
+        }
     }
 }
