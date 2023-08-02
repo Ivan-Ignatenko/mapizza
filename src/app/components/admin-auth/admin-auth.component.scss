@@ -1,8 +1,7 @@
 @import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
 
 .container {
-    width: 100%;
-    min-height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,8 +22,25 @@
         justify-content: space-between;
         padding: 100px 50px;
 
+        @include screen-1440 {
+            width: 50%;
+        }
+
+        @include screen-1280 {
+            width: 60%;
+        }
+
+        @include screen-1024 {
+            width: 80%;
+        }
+
+        @include screen-768{
+            width: 85%;
+            padding: 80px 30px;
+        }
+
         img {
-            width: 25%;
+            width: 40%;
             margin-bottom: 30px;
         }
 
@@ -33,9 +49,18 @@
             justify-content: space-between;
             align-items: center;
 
+            @include screen-480 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
             .link{
                 color: gray;
                 position: relative;
+
+                @include screen-480 {
+                    margin-bottom: 10px;
+                }
 
                 &::before {
                     content: "";
@@ -60,11 +85,14 @@
             }
 
             .btn {
-                width: 30%;
                 background: $main-color-red;
                 color: white;
                 cursor: pointer;
                 transition: .5s;
+
+                @include screen-480 {
+                    width: 100%;
+                }
 
                 &:hover{
                     background-color: $main-color-green;
