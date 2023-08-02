@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
 import { ICategoryResponce } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponce } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
@@ -40,7 +42,7 @@ export class HeaderComponent {
     private categoryService: CategoryService,
     private orderService: OrderService,
     private accountService: AccountService,
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -67,28 +69,28 @@ export class HeaderComponent {
 
   getTotalPrice(): void {
     this.total = this.basket
-    .reduce((total: number, prod: IProductResponce) => total + prod.count * prod.price, 0)
+      .reduce((total: number, prod: IProductResponce) => total + prod.count * prod.price, 0)
   }
 
   getTotalCount(): void {
     this.totalCount = this.basket
-    .reduce((total: number, prod: IProductResponce) => total + prod.count, 0);
+      .reduce((total: number, prod: IProductResponce) => total + prod.count, 0);
   }
 
-  updateBasket(): void{
+  updateBasket(): void {
     this.orderService.changeBasket.subscribe(() => {
       this.loadBasket();
     })
   }
 
-  openLoginDialog(): void{
-    this.dialog.open(AuthorizationComponent, {
-      backdropClass: 'dialog-back',
-      autoFocus: false
-    });
+  openLoginDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.backdropClass = 'dialog-back';
+    dialogConfig.autoFocus = false;
+    this.dialog.open(AuthorizationComponent, dialogConfig);
   }
 
-  showModal(): void{
+  showModal(): void {
     if (this.basket.length > 0) {
       this.emptyBasket = false;
     }
@@ -97,22 +99,22 @@ export class HeaderComponent {
     this.modalStatus = !this.modalStatus;
   }
 
-  productCount(product: IProductResponce, value: boolean): void{
-    if(value){
+  productCount(product: IProductResponce, value: boolean): void {
+    if (value) {
       ++product.count;
-    } else if (!value && product.count > 1){
+    } else if (!value && product.count > 1) {
       --product.count;
     }
   }
 
-  checkUserLogin(): void{
+  checkUserLogin(): void {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
-    if(currentUser && currentUser.role === ROLE.ADMIN){
+    if (currentUser && currentUser.role === ROLE.ADMIN) {
       this.isLogin = false;
       this.loginPage = 'Admin';
       this.cabinetStatus = true;
       this.loginUrl = 'admin';
-    } else if (currentUser && currentUser.role === ROLE.USER){
+    } else if (currentUser && currentUser.role === ROLE.USER) {
       this.isLogin = false;
       this.loginPage = 'User';
       this.cabinetStatus = true;
@@ -125,13 +127,13 @@ export class HeaderComponent {
     }
   }
 
-  checkUpdateUserLogin(): void{
+  checkUpdateUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
       this.checkUserLogin();
     })
   }
 
-  openSmallMenu(): void{
+  openSmallMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
   }
 }

@@ -10,7 +10,7 @@
         <input matInput type="password" formControlName="password">
     </mat-form-field>
     <button [disabled]="authForm.invalid" class="btn" mat-raised-button (click)="loginUser()" mat-dialog-close>УВІЙТИ</button>
-    <div>
+    <div class="to_register">
         <span class="text"><b>Ще не зареєстровані?  </b></span>
         <span class="link" (click)="openRegisterModal()"><b>Зареєструватись</b></span>
     </div>
