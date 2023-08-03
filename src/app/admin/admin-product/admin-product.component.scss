@@ -1,4 +1,5 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
 
 %input-style {
     height: 60px;
@@ -8,6 +9,11 @@
     color: gray;
     font-size: 18px;
 
+    @include screen-768 {
+        height: 50px;
+        font-size: 16px;
+    }
+
     &:focus {
         border: 2px solid $main-color-green;
         box-shadow: 0px 0px 3px 3px $main-color-green;
@@ -15,7 +21,14 @@
 }
 
 .container {
+    overflow-x: auto;
     width: 100%;
+    padding-left: 5px;
+
+    @include screen-1024 {
+        margin-top: 30px;
+        padding: 0px;
+    }
 
     .create {
         width: 350px;
@@ -27,6 +40,17 @@
         margin-bottom: 20px;
         color: white;
 
+        @include screen-1024 {
+            height: 50px;
+            font-size: 18px;
+        }
+
+        @include screen-480 {
+            width: 100%;
+            height: 40px;
+            font-size: 16px;
+        }
+
         &:hover {
             background-color: $main-color-green;
         }
@@ -37,41 +61,75 @@
         display: flex;
         flex-direction: column;
 
+        @include screen-1440 {
+            width: 70%;
+        }
+
+        @include screen-1280 {
+            width: 80%;
+        }
+
+        @include screen-1024 {
+            width: 90%;
+        }
+
+        @include screen-768 {
+            width: 100%;
+        }
+
         select {
-            width: 97%;
-            height: 60px;
+            @extend %input-style;
             margin-bottom: 20px;
-            border-radius: 8px;
-            border: 2px solid gray;
-            color: gray;
-            font-size: 18px;
-            padding-left: 10px;
             cursor: pointer;
         }
 
-        .name,
-        .path,
-        .weight,
-        .price {
-            @extend %input-style;
-            width: 48%;
-            margin-right: 10px;
+        .input-wrapper {
+            display: flex;
+            justify-content: space-between;
+
+            @include screen-480 {
+                flex-wrap: wrap;
+            }
+
+            .name,
+            .path,
+            .weight,
+            .price {
+                @extend %input-style;
+                width: 49%;
+                margin-right: 0px;
+
+                @include screen-480 {
+                    width: 100%;
+                }
+            }
+
+            .path,
+            .price {
+                @include screen-480 {
+                    margin-top: 10px
+                }
+            }
         }
 
         .description {
-            width: 97%;
             @extend %input-style;
             margin: 20px 0px;
+
+            @include screen-480 {
+                margin: 10px 0px;
+            }
         }
 
         .add-img {
-            width: 97%;
-            height: 60px;
-            border-radius: 8px;
-            border: 2px solid gray;
+            @extend %input-style;
             margin-top: 20px;
-            padding: 17px;
+            padding: 16px;
             display: flex;
+
+            @include screen-768 {
+                height: 60px;
+            }
 
             input[type=file] {
                 font-size: 14px;
@@ -131,6 +189,16 @@
             margin-top: 20px;
             color: white;
 
+            @include screen-1024 {
+                height: 50px;
+                font-size: 16px;
+            }
+
+            @include screen-480 {
+                width: 100%;
+                height: 40px;
+            }
+
             &:hover {
                 background-color: $main-color-green;
             }
@@ -139,12 +207,21 @@
 
     table {
         width: 100%;
+        min-width: 800px;
         border-collapse: collapse;
+
+        @include screen-768 {
+            font-size: 14px;
+        }
 
         thead {
 
             tr {
                 height: 70px;
+
+                @include screen-1024 {
+                    height: 50px;
+                }
             }
 
             th {
@@ -161,25 +238,30 @@
                 td {
                     padding: 20px 10px 20px 0px;
                     border-bottom: 2px solid gray;
+
+                    @include screen-1024 {
+                        padding: 10px 10px 10px 0px;
+                    }
                 }
 
                 .number,
                 .category,
                 .price,
-                .weight{
+                .weight {
                     width: 5%;
                 }
 
-                .name{
+                .name {
                     width: 16%;
                 }
 
-                .description{
+                .description {
                     width: 42%;
                 }
 
-                .image{
+                .image {
                     width: 12%;
+
                     img {
                         width: 100px;
                     }

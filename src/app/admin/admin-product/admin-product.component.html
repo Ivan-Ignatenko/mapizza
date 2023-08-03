@@ -4,12 +4,12 @@
         <select formControlName="category" name="select-category">
             <option [ngValue]="category" *ngFor="let category of adminCategories">{{ category.name }}</option>
         </select>
-        <div>
+        <div class="input-wrapper">
             <input formControlName="name" name="name" class="name" type="text" placeholder="*Назва">
             <input formControlName="path" name="path" class="path" type="text" placeholder="*Шлях">
         </div>
         <input formControlName="description" name="description" class="description" type="text" placeholder="*Опис">
-        <div>
+        <div class="input-wrapper">
             <input formControlName="weight" name="weight" class="weight" type="number" placeholder="*Вага">
             <input formControlName="price" name="price" class="price" type="number" placeholder="*Ціна">
         </div>

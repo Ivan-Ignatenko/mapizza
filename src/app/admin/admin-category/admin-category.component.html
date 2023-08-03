@@ -1,8 +1,10 @@
 <div class="container">
     <button class="create" (click)="openForm()"><b>ДОДАТИ КАТЕГОРІЮ</b></button>
     <form class="add" [formGroup]="categoryForm" (ngSubmit)="addCategory()" *ngIf="formStatus">
-        <input formControlName="name" name="name" type="text" placeholder="*Назва">
-        <input formControlName="path" name="path" type="text" placeholder="*Шлях">
+        <div class="input-wrapper">
+            <input formControlName="name" name="name" type="text" placeholder="*Назва">
+            <input formControlName="path" name="path" type="text" placeholder="*Шлях">
+        </div>
         <div class="add-img">
             <input name="file" id="file" type="file" (change)="upload($event)">
             <label for="file"></label>

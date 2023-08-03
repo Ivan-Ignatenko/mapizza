@@ -1,24 +1,63 @@
 @import '../shared/styles/variables';
+@import '../shared/styles/mixins';
 
 .container {
     width: 90%;
     margin: 50px auto;
     display: flex;
 
+    @include screen-1280 {
+        width: 98%;
+    }
+
+    @include screen-1024 {
+        flex-wrap: wrap;
+    }
+
     .tabs {
-        width: 14%;
+        width: 18%;
         text-align: center;
+        margin-right: 30px;
+
+        @include screen-1280 {
+            margin-right: 20px;
+        }
+
+        @include screen-1024 {
+            display: flex;
+            width: 100%;
+            margin-right: 0px;
+        }
+
+        @include screen-480 {
+            flex-direction: column;
+        }
 
         div {
             text-align: center;
+            line-height: 70px;
             font-size: 20px;
             border: 1px solid lightgray;
             cursor: pointer;
-            padding: 25px;
+            padding: 0px 10px;
+
+            @include screen-1440 {
+                font-size: 18px;
+            }
+
+            @include screen-1024 {
+                line-height: 40px;
+                font-size: 16px;
+                padding: 0px 25px;
+            }
+
+            @include screen-768 {
+                padding: 0px 10px;
+                font-size: 14px;
+            }
         }
 
         button {
-            width: 120px;
             height: 70px;
             border-radius: 8px;
             background-color: $main-color-green;
@@ -26,6 +65,27 @@
             margin-top: 20px;
             cursor: pointer;
             color: white;
+            transition: 0.5s;
+            padding: 0px 50px;
+
+            @include screen-1024 {
+                height: 100%;
+                font-size: 16px;
+                margin-top: 0px;
+                padding: 0px 25px;
+                margin-left: 10px;
+            }
+
+            @include screen-768 {
+                padding: 0px 10px;
+                font-size: 14px;
+            }
+
+            @include screen-480 {
+                margin-top: 10px;
+                height: 40px;
+                margin-left: 0px;
+            }
 
             &:hover {
                 background-color: $main-color-red;
@@ -41,7 +101,10 @@
     }
 
     .desktop {
-        width: 86%;
-        padding-left: 40px;
+        width: 80%;
+
+        @include screen-1024 {
+            width: 100%;
+        }
     }
 }

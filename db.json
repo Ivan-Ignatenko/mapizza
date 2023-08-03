@@ -192,6 +192,22 @@
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fmors_vid_shefa-removebg-preview-1-1.png?alt=media&token=28795b34-08f7-41dd-ab51-12533c5b6061",
       "count": 1,
       "id": 9
+    },
+    {
+      "category": {
+        "name": "Десерти",
+        "path": "desserts",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2Fi-menu-3.svg?alt=media&token=3678958f-4f7d-4b08-9ff2-93c208699cde",
+        "id": 3
+      },
+      "path": "as",
+      "name": "as",
+      "description": "asasas",
+      "price": 1,
+      "weight": 1,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mapizza-5b64b.appspot.com/o/images%2F5fc2d72bcdec66.37964080.jpg?alt=media&token=575946d8-b814-468b-a07b-270578cbf1a3",
+      "count": 1,
+      "id": 10
     }
   ],
   "auth": [
