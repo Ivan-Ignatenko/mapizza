@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IProductResponce } from 'src/app/shared/interfaces/product/product.interface';
-// import { OrderService } from 'src/app/shared/services/order/order.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-basket',
@@ -14,12 +14,11 @@ export class BasketComponent {
   public totalPrice: number = 0;
 
   constructor(
-    // private orderService: OrderService
-  ){}
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
     this.loadBasket();
-    // this.updateBasket();
   }
 
   loadBasket(): void {
@@ -29,27 +28,37 @@ export class BasketComponent {
     this.getTotalPrice();
   }
 
-  // updateBasket(): void{
-  //   this.orderService.changeBasket.subscribe(() => {
-  //     this.loadBasket();
-  //   })
-  // }
-
   getTotalPrice(): void {
     this.totalPrice = this.basket
-    .reduce((total: number, prod: IProductResponce) => total + prod.count * prod.price, 0)
+      .reduce((total: number, prod: IProductResponce) => total + prod.count * prod.price, 0)
   }
 
-  productCount(product: IProductResponce, value: boolean): void{
-    if(value){
+  productCount(product: IProductResponce, value: boolean): void {
+    if (value) {
       ++product.count;
-      // this.orderService.changeBasket.next(true);
-      // this.updateBasket();
-    } else if (!value && product.count > 1){
+      const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
+      const index = array.findIndex(item => item.id === product.id);
+      ++array[index].count;
+      localStorage.setItem('basket', JSON.stringify(array));
+      this.orderService.changeBasket.next(true);
+      this.loadBasket();
+    } else if (!value && product.count > 1) {
       --product.count;
-      // this.orderService.changeBasket.next(true);
-      // this.updateBasket();
+      const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
+      const index = array.findIndex(item => item.id === product.id);
+      --array[index].count;
+      localStorage.setItem('basket', JSON.stringify(array));
+      this.orderService.changeBasket.next(true);
+      this.loadBasket();
     }
   }
 
+  deleteProduct(id: number): void {
+    const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
+    const index = array.findIndex(item => item.id === id);
+    array.splice(index, 1);
+    localStorage.setItem('basket', JSON.stringify(array));
+    this.orderService.changeBasket.next(true);
+    this.loadBasket();
+  }
 }

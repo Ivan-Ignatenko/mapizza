@@ -9,7 +9,7 @@
                 <div class="product-info">
                     <div class="product-title">
                         <p>{{ product.name }}</p>
-                        <button class="delete-product"></button>
+                        <button class="delete-product" (click)="deleteProduct(product.id)"></button>
                     </div>
                     <div class="product-count">
                         <div class="price">{{ product.price }} грн</div>

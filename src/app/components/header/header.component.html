@@ -128,7 +128,7 @@
                 <div class="product-info">
                     <div class="top">
                         <p class="name">{{ product.name }}</p>
-                        <img class="trash" src="../../../assets/images/trash-solid.svg" alt="trash">
+                        <img class="trash" src="../../../assets/images/trash-solid.svg" alt="trash" (click)="deleteProduct(product.id)">
                     </div>
                     <div class="bottom">
                         <p class="price">{{ product.price }} грн</p>
@@ -144,7 +144,7 @@
         </ng-template>
         <div class="empty-basket" *ngIf="emptyBasket; else fullBasket">
             <p><b>Кошик порожній</b></p>
-            <button [routerLink]="[ '/']"><b>ПЕРЕЙТИ ДО КАТАЛОГУ</b></button>
+            <button [routerLink]="['/']" (click)="showModal()"><b>ПЕРЕЙТИ ДО КАТАЛОГУ</b></button>
         </div>
     </div>
     <div class="basket-info-bottom">

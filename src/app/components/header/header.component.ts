@@ -102,8 +102,29 @@ export class HeaderComponent {
   productCount(product: IProductResponce, value: boolean): void {
     if (value) {
       ++product.count;
+      const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
+      const index = array.findIndex(item => item.id === product.id);
+      ++array[index].count;
+      localStorage.setItem('basket', JSON.stringify(array));
+      this.orderService.changeBasket.next(true);
     } else if (!value && product.count > 1) {
       --product.count;
+      const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
+      const index = array.findIndex(item => item.id === product.id);
+      --array[index].count;
+      localStorage.setItem('basket', JSON.stringify(array));
+      this.orderService.changeBasket.next(true);
+    }
+  }
+
+  deleteProduct(id: number): void {
+    const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
+    const index = array.findIndex(item => item.id === id);
+    array.splice(index, 1);
+    localStorage.setItem('basket', JSON.stringify(array));
+    this.orderService.changeBasket.next(true);
+    if (array.length === 0) {
+      this.emptyBasket = !this.emptyBasket;
     }
   }
 
