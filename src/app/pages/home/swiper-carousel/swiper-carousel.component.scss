@@ -1,0 +1,156 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/variables';
+
+.container {
+    margin-top: 50px;
+
+    @include screen-1024{
+        display: none;
+    }
+
+    .swiper-container {
+        overflow: hidden;
+        background-color: $background-color;
+        border-radius: 20px;
+
+        .swiper-wrapper {
+
+            .swiper-slide {
+                display: flex;
+                padding: 50px;
+
+                .slide-info {
+                    width: 40%;
+                    align-self: center;
+                    padding-right: 20px;
+
+                    @include screen-1024 {
+                        width: 100%;
+                        margin-top: 20px;
+                    }
+
+                    .slide-title {
+                        font-size: 30px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        cursor: pointer;
+                        color: black;
+                        transition: 0.4s;
+
+                        @include screen-1024 {
+                            font-size: 24px;
+                        }
+
+                        @include screen-480 {
+                            font-size: 20px;
+                        }
+
+                        &:hover {
+                            color: $main-color-green;
+                        }
+                    }
+
+                    .slide-description {
+                        margin-top: 15px;
+                        font-size: 16px;
+                        line-height: 1.5em;
+                        color: gray;
+                        font-weight: 400;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        @include screen-480 {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .discount-link {
+                        margin-top: 15px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        line-height: 1.5em;
+                        letter-spacing: .05em;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        text-decoration: none;
+    
+                        span {
+                            color: $main-color-red;
+                            transition: 0.4s;
+                        }
+    
+                        i {
+                            position: relative;
+                            display: inline-block;
+                            margin-left: 10px;
+                            width: 16px;
+                            height: 16px;
+                            border-radius: 100%;
+                            border: 2px solid $main-color-red;
+                            transition: 0.4s;
+    
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%) rotate(-45deg);
+                                width: 5px;
+                                height: 5px;
+                                margin-left: -1px;
+                                border-right: 2px solid $main-color-red;
+                                border-bottom: 2px solid $main-color-red;
+                                transition: 0.4s;
+                            }
+                        }
+    
+                        &:hover span {
+                            color: $main-color-green;
+                        }
+    
+                        &:hover i {
+                            border: 2px solid $main-color-green;
+                        }
+    
+                        &:hover i::before {
+                            border-right: 2px solid $main-color-green;
+                            border-bottom: 2px solid $main-color-green;
+                        }
+                    }
+                }
+
+                .img-wrapper {
+                    width: 60%;
+                    text-align: center;
+                    cursor: pointer;
+
+                    img {
+                        max-width: 100%;
+                        border-radius: 10px;
+
+                        @include screen-1280{
+                            height: 350px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .swiper-button-prev{
+        margin-left: 10px;
+        font-size: 50px;
+        color: $main-color-green;
+    }
+
+    .swiper-button-next{
+        margin-right: 10px;
+        font-size: 50px;
+        color: $main-color-green;
+    }
+}

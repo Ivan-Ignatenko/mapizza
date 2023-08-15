@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let slide of slides">
+                <div class="slide-info">
+                    <div [routerLink]="[ '/actions', slide.id ]" class="slide-title">{{ slide.name }}</div>
+                    <div class="slide-description">{{ slide.description | slice:0:300 }}
+                        <span *ngIf="slide.description.length > 300">...</span>
+                    </div>
+                    <a href="#" [routerLink]="[ '/actions', slide.id ]" class="discount-link"><span>ДІЗНАТИСЯ
+                            БІЛЬШЕ</span><i></i></a>
+                </div>
+                <div class="img-wrapper" [routerLink]="[ '/actions', slide.id ]">
+                    <img [src]="slide.imagePath" [alt]="slide.name">
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
