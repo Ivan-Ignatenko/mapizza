@@ -13,6 +13,8 @@ export class BasketComponent {
 
   public totalPrice: number = 0;
 
+  public showTextarea: boolean = false;
+
   constructor(
     private orderService: OrderService
   ) { }
@@ -53,7 +55,7 @@ export class BasketComponent {
     }
   }
 
-  deleteProduct(id: number): void {
+  deleteProduct(id: string): void {
     const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
     const index = array.findIndex(item => item.id === id);
     array.splice(index, 1);

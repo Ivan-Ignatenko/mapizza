@@ -18,7 +18,7 @@ export class AdminProductComponent {
   public adminCategories: ICategoryResponce[] = [];
   public productForm!: FormGroup;
 
-  public editId!: number;
+  public editId!: number | string;
   public editStatus: boolean = false;
   public formStatus: boolean = false;
 
@@ -67,24 +67,24 @@ export class AdminProductComponent {
 
   getAllProducts(): void {
     this.productService.getAll().subscribe(data => {
-      this.adminProducts = data;
+      this.adminProducts = data as IProductResponce[];
     })
   };
 
   getAllCategories(): void {
     this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+      this.adminCategories = data as ICategoryResponce[];
     })
   };
 
   addProduct(): void {
     if (this.editStatus) {
-      this.productService.updateProduct(this.productForm.value, this.editId).subscribe(() => {
+      this.productService.updateProduct(this.productForm.value, this.editId as string).then(() => {
         this.getAllProducts();
         this.toastr.success('The product has been successfully changed');
       })
     } else {
-      this.productService.createProduct(this.productForm.value).subscribe(() => {
+      this.productService.createProduct(this.productForm.value).then(() => {
         this.getAllProducts();
         this.toastr.success('The product has been created successfully');
       })
@@ -112,7 +112,7 @@ export class AdminProductComponent {
 
   deleteProduct(product: IProductResponce): void {
     if (confirm('Are you sure?')) {
-      this.productService.deleteProduct(product.id).subscribe(() => {
+      this.productService.deleteProduct(product.id as string).then(() => {
         this.getAllProducts();
         this.toastr.success('The product has been successfully removed');
       })

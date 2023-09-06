@@ -15,7 +15,7 @@ export class AdminCategoryComponent {
   public adminCategories: ICategoryResponce[] = [];
   public categoryForm!: FormGroup;
 
-  public editId!: number;
+  public editId!: number | string;
   public editStatus: boolean = false;
   public formStatus: boolean = false;
 
@@ -48,18 +48,18 @@ export class AdminCategoryComponent {
 
   getAllCategories(): void {
     this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+      this.adminCategories = data as ICategoryResponce[];
     })
   }
 
   addCategory(): void {
     if (this.editStatus) {
-      this.categoryService.updateCategory(this.categoryForm.value, this.editId).subscribe(() => {
+      this.categoryService.updateCategory(this.categoryForm.value, this.editId as string).then(() => {
         this.getAllCategories();
         this.toastr.success('The category has been successfully changed');
       })
     } else {
-      this.categoryService.createCategory(this.categoryForm.value).subscribe(() => {
+      this.categoryService.createCategory(this.categoryForm.value).then(() => {
         this.getAllCategories();
         this.toastr.success('The category has been created successfully');
       })
@@ -84,7 +84,7 @@ export class AdminCategoryComponent {
 
   deleteCategory(category: ICategoryResponce): void {
     if (confirm('Are you sure?')) {
-      this.categoryService.deleteCategory(category.id).subscribe(() => {
+      this.categoryService.deleteCategory(category.id as string).then(() => {
         this.getAllCategories();
         this.toastr.success('The category has been successfully removed');
       })

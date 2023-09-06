@@ -280,7 +280,7 @@
                     width: 49%;
 
                     @include screen-768 {
-                        width: 100%; 
+                        width: 100%;
                         margin-top: 15px;
                     }
                 }
@@ -399,5 +399,25 @@
                 }
             }
         }
+    }
+
+    .textarea-container {
+        margin-top: 10px;
+        height: 0px;
+        transition: 0.8s;
+
+        & textarea{
+            width: 100%;
+            resize: none;
+            border: 1px solid $border-color;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 12px;
+            line-height: 1.5em;
+        }
+    }
+
+    .textarea-container.expanded {
+        height: 102px;
     }
 }

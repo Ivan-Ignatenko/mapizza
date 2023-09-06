@@ -55,7 +55,7 @@ export class HeaderComponent {
 
   getAllCategories(): void {
     this.categoryService.getAll().subscribe(data => {
-      this.categories = data;
+      this.categories = data as ICategoryResponce[];
     })
   }
 
@@ -117,7 +117,7 @@ export class HeaderComponent {
     }
   }
 
-  deleteProduct(id: number): void {
+  deleteProduct(id: string): void {
     const array: IProductResponce[] = JSON.parse(localStorage.getItem('basket') as string);
     const index = array.findIndex(item => item.id === id);
     array.splice(index, 1);

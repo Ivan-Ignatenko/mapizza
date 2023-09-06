@@ -6,15 +6,16 @@
             <p>пт - сб 09:30 − 22:00</p>
         </div>
         <nav class="pages" [ngClass]="{'isOpen': menuIsOpen}">
-            <a [routerLink]="[ '' ]" class="main-page">Головна</a>
-            <a [routerLink]="[ '/about-us' ]">Про нас</a>
-            <a [routerLink]="[ '/dostavka' ]">Доставка та оплата</a>
-            <a [routerLink]="[ '/actions' ]">Акції</a>
-            <a [routerLink]="[ '/kontakty' ]">Контакти</a>
-            <a [routerLink]="[ '/career' ]">Вакансії</a>
-            <a [routerLink]="[ '/news' ]">Новини</a>
-            <a [routerLink]="[ '/faq' ]">FAQ</a>
-            <a [routerLink]="[ '/'+loginUrl ]" *ngIf="cabinetStatus">{{ loginPage }}</a>
+            <div class="close main-page" (click)="openSmallMenu()">✖</div>
+            <a [routerLink]="[ '' ]" class="main-page" (click)="openSmallMenu()">Головна</a>
+            <a [routerLink]="[ '/about-us' ]" (click)="openSmallMenu()">Про нас</a>
+            <a [routerLink]="[ '/dostavka' ]" (click)="openSmallMenu()">Доставка та оплата</a>
+            <a [routerLink]="[ '/actions' ]" (click)="openSmallMenu()">Акції</a>
+            <a [routerLink]="[ '/kontakty' ]" (click)="openSmallMenu()">Контакти</a>
+            <a [routerLink]="[ '/career' ]" (click)="openSmallMenu()">Вакансії</a>
+            <a [routerLink]="[ '/news' ]" (click)="openSmallMenu()">Новини</a>
+            <a [routerLink]="[ '/faq' ]" (click)="openSmallMenu()">FAQ</a>
+            <a [routerLink]="[ '/'+loginUrl ]" *ngIf="cabinetStatus" (click)="openSmallMenu()">{{ loginPage }}</a>
         </nav>
         <div class="time-delivery">
             <img src="../../../assets/images/i-header-top.svg" alt="Доставка">

@@ -13,21 +13,19 @@ import { AuthorizationComponent } from './components/authorization/authorization
 
 import { environment } from '../environments/environment';
 
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideStorage,getStorage } from '@angular/fire/storage';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { SharedModule } from './shared/shared.module';
-// import { SwiperComponent } from './components/swiper/swiper/swiper.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AuthorizationComponent,
-    // SwiperComponent
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,

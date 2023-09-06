@@ -74,11 +74,13 @@
                         <input type="checkbox" id="callback">
                         <span>Зателефонуйте мені для уточнення замовлення</span>
                     </label>
-                    <label for="comment">
-                        <input type="checkbox" id="comment" class="check">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="showTextarea" class="check" name="first">
                         <span>Додати коментар</span>
-                        <textarea class="comment" placeholder="Ваш коментар"></textarea>
                     </label>
+                    <div class="textarea-container" [ngClass]="{'expanded': showTextarea}">
+                        <textarea *ngIf="showTextarea" placeholder="Ваш коментар"></textarea>
+                    </div>
                 </div>
                 <button type="button" class="btn">підтвердити замовлення</button>
             </form>

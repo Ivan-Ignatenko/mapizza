@@ -38,7 +38,7 @@ export class ProductComponent {
 
   getAllProducts(): void{
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe(data => {
+    this.productService.getAllByCategory(categoryName).then(data => {
       this.userProducts = data;
       this.categoryName = data[0].category.name;
     })

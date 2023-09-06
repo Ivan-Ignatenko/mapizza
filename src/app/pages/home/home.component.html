@@ -24,11 +24,11 @@
     </div>
     <div class="product-cards">
         <div class="card" *ngFor="let pizza of pizzas">
-            <div class="img-wrap">
+            <div class="img-wrap" [routerLink]="[ '/product/'+pizza.category.path, pizza.id ]">
                 <img [src]="pizza.imagePath" [alt]="pizza.name">
             </div>
             <div class="info-wrap">
-                <p class="name"><b>{{ pizza.name }}</b></p>
+                <p class="name" [routerLink]="[ '/product/'+pizza.category.path, pizza.id ]"><b>{{ pizza.name }}</b></p>
                 <p class="description">{{ pizza.description }}</p>
                 <p class="price"><b>{{ pizza.price }} грн</b><span class="weight">/ {{ pizza.weight }} г</span></p>
                 <div class="ordering">

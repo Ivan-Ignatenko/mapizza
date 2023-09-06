@@ -21,8 +21,7 @@ export class FooterComponent {
 
   getAllCategories(): void {
     this.categoryService.getAll().subscribe(data => {
-      this.categories = data;
+      this.categories = data as ICategoryResponce[];
     })
   }
-
 }

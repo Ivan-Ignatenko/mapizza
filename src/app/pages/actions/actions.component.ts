@@ -21,7 +21,7 @@ export class ActionsComponent {
 
   getAllActions(): void {
     this.actionsService.getAll().subscribe(data => {
-      this.userActions = data;
+      this.userActions = data as IActionResponce[];
     })
   }
 

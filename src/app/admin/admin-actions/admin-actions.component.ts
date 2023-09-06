@@ -15,7 +15,7 @@ export class AdminActionsComponent {
   public adminActions: IActionResponce[] = [];
   public actionForm!: FormGroup;
   
-  public editId!: number;
+  public editId!: number | string;
   public editStatus: boolean = false;
   public formStatus: boolean = false;
 
@@ -54,18 +54,18 @@ export class AdminActionsComponent {
 
   getAllActions(): void {
     this.actionsService.getAll().subscribe(data => {
-      this.adminActions = data;
+      this.adminActions = data as IActionResponce[];
     })
   }
 
   addAction(): void {
     if(this.editStatus) {
-      this.actionsService.updateAction(this.actionForm.value, this.editId).subscribe(() => {
+      this.actionsService.updateAction(this.actionForm.value, this.editId as string).then(() => {
         this.getAllActions();
         this.toastr.success('The action has been successfully changed');
       })
     } else {
-      this.actionsService.createAction(this.actionForm.value).subscribe(() => {
+      this.actionsService.createAction(this.actionForm.value).then(() => {
         this.getAllActions();
         this.toastr.success('The action has been created successfully');
       })
@@ -90,7 +90,7 @@ export class AdminActionsComponent {
 
   deleteAction(action: IActionResponce): void {
     if (confirm('Are you sure?')) {
-      this.actionsService.deleteAction(action.id).subscribe(() => {
+      this.actionsService.deleteAction(action.id as string).then(() => {
         this.getAllActions();
         this.toastr.success('The action has been successfully removed');
       })

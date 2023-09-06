@@ -1,45 +1,54 @@
 import { Injectable } from '@angular/core';
-import { IActionRequest, IActionResponce } from '../../interfaces/actions/actions.interface';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { IActionRequest } from '../../interfaces/actions/actions.interface';
+import { CollectionReference, Firestore, collectionData, deleteDoc, doc, docData, updateDoc } from '@angular/fire/firestore';
+import { DocumentData, addDoc, collection } from '@firebase/firestore';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActionsService implements Resolve<IActionResponce> {
+export class ActionsService implements Resolve<DocumentData> {
 
-  private url = environment.BACKEND_URL;
-  private api = { actions: `${this.url}/discounts` };
+  private actionCollection!: CollectionReference<DocumentData>;
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private afs: Firestore
+  ) {
+    this.actionCollection = collection(this.afs, 'actions');
+   }
 
   ngOnInit(): void {}
 
-  getAll(): Observable<IActionResponce[]>{
-    return this.http.get<IActionResponce[]>(this.api.actions);
+  getAll() {
+    return collectionData(this.actionCollection, { idField: 'id' }).pipe(
+      map(actions => {
+        return actions.map(action => {
+          return {
+            ...action,
+            date: action['date'].toDate()
+          };
+        });
+      })
+    );
   }
 
-  getOneAction(id: number): Observable<IActionResponce>{
-    return this.http.get<IActionResponce>(`${this.api.actions}/${id}`);
+  createAction(action: IActionRequest) {
+    return addDoc(this.actionCollection, action);
   }
 
-  createAction(action: IActionRequest): Observable<IActionResponce>{
-    return this.http.post<IActionResponce>(this.api.actions, action);
+  updateAction(action: IActionRequest, id: string) {
+    const actionDocumentReference = doc(this.afs, `actions/${id}`);
+    return updateDoc(actionDocumentReference, { ...action });
   }
 
-  updateAction(action: IActionRequest, id: number): Observable<IActionResponce>{
-    return this.http.patch<IActionResponce>(`${this.api.actions}/${id}`, action);
+  deleteAction(id: string) {
+    const actionDocumentReference = doc(this.afs, `actions/${id}`);
+    return deleteDoc(actionDocumentReference);
   }
 
-  deleteAction(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.api.actions}/${id}`);
-  }
-
-  resolve(route: ActivatedRouteSnapshot): Observable<IActionResponce>{
-    return this.http.get<IActionResponce>(`${this.api.actions}/${route.paramMap.get('id')}`);
+  resolve(route: ActivatedRouteSnapshot) {
+    const actionDocumentReference = doc(this.afs, `actions/${route.paramMap.get('id')}`);
+    return docData(actionDocumentReference, { idField: 'id' });
   }
 }

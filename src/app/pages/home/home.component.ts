@@ -22,7 +22,7 @@ export class HomeComponent {
   }
 
   getPizzas(): void {
-    this.productService.getAllByCategory('pizza').subscribe(data => {
+    this.productService.getAllByCategory('pizza').then(data => {
       this.pizzas = data;
     })
   }

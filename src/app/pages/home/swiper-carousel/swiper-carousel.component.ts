@@ -34,7 +34,7 @@ export class SwiperCarouselComponent {
 
   getAllActions(): void {
     this.actionsService.getAll().subscribe(data => {
-      this.slides = data;
+      this.slides = data as IActionResponce[];
     })
   }
 }
